@@ -1,0 +1,51 @@
+---
+import { projects } from '../../data/portfolio';
+
+const featured = projects.find((p) => p.featured) ?? projects[0];
+---
+
+<section class="bg-white py-12 sm:py-16" aria-labelledby="featured-heading">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <p id="featured-heading" class="sr-only">Proyek unggulan</p>
+
+    <article class="group overflow-hidden rounded-3xl bg-navy shadow-2xl shadow-teal/15 lg:grid lg:grid-cols-2">
+      <div
+        class:list={['relative min-h-[280px] bg-gradient-to-br lg:min-h-[400px]', featured.gradient]}
+        role="img"
+        aria-label={`Preview proyek ${featured.title}`}
+      >
+        <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.06\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-50"></div>
+        <span class="absolute left-6 top-6 rounded-full bg-yellow px-4 py-1.5 text-xs font-bold text-navy">
+          Proyek Unggulan
+        </span>
+      </div>
+
+      <div class="flex flex-col justify-center p-8 sm:p-10 lg:p-12">
+        <p class="text-sm font-semibold text-teal-light">{featured.client} · {featured.year}</p>
+        <h2 class="mt-3 text-2xl font-extrabold leading-snug text-white sm:text-3xl">{featured.title}</h2>
+        <p class="mt-4 leading-relaxed text-white/75">{featured.description}</p>
+
+        <ul class="mt-6 flex flex-wrap gap-2" role="list">
+          {featured.tags.map((tag) => (
+            <li class="rounded-full bg-white/10 px-3 py-1 text-xs font-medium text-white/90">{tag}</li>
+          ))}
+        </ul>
+
+        <ul class="mt-6 space-y-2 border-t border-white/10 pt-6" role="list">
+          {featured.results.map((result) => (
+            <li class="flex items-center gap-2 text-sm font-medium text-yellow">
+              <svg class="h-4 w-4 shrink-0" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path
+                  fill-rule="evenodd"
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+              {result}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </article>
+  </div>
+</section>

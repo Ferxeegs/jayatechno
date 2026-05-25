@@ -33,7 +33,7 @@ export const navLinks = [
       { href: '/#layanan', label: 'Web & Apps' },
     ],
   },
-  { href: '/#portfolio', label: 'Portfolio' },
+  { href: '/portfolio', label: 'Portfolio' },
   { href: '/#kerjasama', label: 'Blog' },
   { href: '/#kontak', label: 'Hubungi Kami' },
 ] as const;

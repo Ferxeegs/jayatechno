@@ -1,0 +1,42 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageLayout from '../layouts/PageLayout.astro';
+import PortfolioHero from '../components/portfolio/PortfolioHero.astro';
+import PortfolioFeatured from '../components/portfolio/PortfolioFeatured.astro';
+import PortfolioGrid from '../components/portfolio/PortfolioGrid.astro';
+import PortfolioProcess from '../components/portfolio/PortfolioProcess.astro';
+import PortfolioCTA from '../components/portfolio/PortfolioCTA.astro';
+import { site } from '../data/site';
+import { portfolioMeta, projects } from '../data/portfolio';
+
+const title = `${portfolioMeta.title} — ${site.name}`;
+const description = portfolioMeta.description;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: title,
+  description,
+  url: `${site.url}/portfolio`,
+  publisher: { '@type': 'Organization', name: site.name },
+  hasPart: projects.map((p) => ({
+    '@type': 'CreativeWork',
+    name: p.title,
+    description: p.description,
+    dateCreated: p.year,
+  })),
+};
+---
+
+<Layout title={title} description={description}>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  <PageLayout>
+    <main>
+      <PortfolioHero />
+      <PortfolioFeatured />
+      <PortfolioGrid />
+      <PortfolioProcess />
+      <PortfolioCTA />
+    </main>
+  </PageLayout>
+</Layout>

@@ -1,0 +1,125 @@
+---
+import SectionHeading from '../ui/SectionHeading.astro';
+import { categories, projects } from '../../data/portfolio';
+---
+
+<section class="bg-mint py-16 sm:py-24" aria-labelledby="portfolio-grid-heading">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <SectionHeading
+      id="portfolio-grid-heading"
+      title="Koleksi Proyek Kami"
+      highlight="Proyek"
+      subtitle="Filter berdasarkan kategori untuk menemukan karya yang relevan dengan kebutuhan Anda."
+      align="center"
+    />
+
+    <div class="mt-10 flex flex-wrap justify-center gap-2" role="tablist" aria-label="Filter kategori portfolio">
+      {
+        categories.map((cat, i) => (
+          <button
+            type="button"
+            role="tab"
+            aria-selected={i === 0}
+            data-filter={cat.id}
+            class:list={[
+              'portfolio-filter rounded-full px-5 py-2.5 text-sm font-semibold transition',
+              i === 0
+                ? 'bg-teal text-white shadow-md shadow-teal/20'
+                : 'bg-white text-teal hover:bg-white/90',
+            ]}
+          >
+            {cat.label}
+          </button>
+        ))
+      }
+    </div>
+
+    <p id="portfolio-empty" class="mt-12 hidden text-center text-body">
+      Tidak ada proyek dalam kategori ini.
+    </p>
+
+    <ul id="portfolio-list" class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3" role="list">
+      {
+        projects
+          .filter((p) => !p.featured)
+          .map((project) => (
+            <li data-category={project.category} class="portfolio-item">
+              <article class="group flex h-full flex-col overflow-hidden rounded-2xl bg-white shadow-lg shadow-teal/5 ring-1 ring-mint-accent/50 transition hover:-translate-y-1 hover:shadow-xl">
+                <div
+                  class:list={['relative aspect-[16/10] bg-gradient-to-br', project.gradient]}
+                  role="img"
+                  aria-label={`Thumbnail ${project.title}`}
+                >
+                  <div class="absolute inset-0 flex items-end bg-gradient-to-t from-navy/80 via-navy/20 to-transparent p-5 opacity-0 transition group-hover:opacity-100">
+                    <span class="text-sm font-medium text-white">Lihat detail ↓</span>
+                  </div>
+                  <span class="absolute right-4 top-4 rounded-full bg-white/90 px-3 py-1 text-xs font-bold text-teal">
+                    {project.year}
+                  </span>
+                </div>
+
+                <div class="flex flex-1 flex-col p-6">
+                  <p class="text-xs font-semibold uppercase tracking-wide text-teal-light">{project.client}</p>
+                  <h3 class="mt-2 text-lg font-bold leading-snug text-navy">{project.title}</h3>
+                  <p class="mt-3 flex-1 text-sm leading-relaxed text-body line-clamp-3">{project.description}</p>
+
+                  <ul class="mt-4 flex flex-wrap gap-1.5" role="list" aria-label="Hasil proyek">
+                    {project.results.slice(0, 2).map((r) => (
+                      <li class="rounded-md bg-mint px-2 py-1 text-xs font-medium text-teal">{r}</li>
+                    ))}
+                  </ul>
+
+                  <ul class="mt-4 flex flex-wrap gap-2 border-t border-mint-accent pt-4" role="list">
+                    {project.tags.map((tag) => (
+                      <li class="text-xs text-body">#{tag}</li>
+                    ))}
+                  </ul>
+                </div>
+              </article>
+            </li>
+          ))
+      }
+    </ul>
+  </div>
+</section>
+
+<script>
+  const filters = document.querySelectorAll<HTMLButtonElement>('.portfolio-filter');
+  const items = document.querySelectorAll<HTMLElement>('.portfolio-item');
+  const empty = document.getElementById('portfolio-empty');
+
+  filters.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const category = btn.dataset.filter;
+
+      filters.forEach((b) => {
+        const active = b === btn;
+        b.setAttribute('aria-selected', String(active));
+        b.classList.toggle('bg-teal', active);
+        b.classList.toggle('text-white', active);
+        b.classList.toggle('shadow-md', active);
+        b.classList.toggle('shadow-teal/20', active);
+        b.classList.toggle('bg-white', !active);
+        b.classList.toggle('text-teal', !active);
+      });
+
+      let visible = 0;
+      items.forEach((item) => {
+        const match = category === 'all' || item.dataset.category === category;
+        item.classList.toggle('hidden', !match);
+        if (match) visible++;
+      });
+
+      empty?.classList.toggle('hidden', visible > 0);
+    });
+  });
+</script>
+
+<style>
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>

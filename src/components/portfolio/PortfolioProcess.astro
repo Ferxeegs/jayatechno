@@ -1,0 +1,30 @@
+---
+import SectionHeading from '../ui/SectionHeading.astro';
+import { processSteps } from '../../data/portfolio';
+---
+
+<section class="bg-white py-16 sm:py-24" aria-labelledby="process-heading">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <SectionHeading
+      id="process-heading"
+      title="Cara Kami Mengerjakan Proyek"
+      highlight="Proyek"
+      subtitle="Metodologi terstruktur yang memastikan setiap portofolio lahir dari proses yang transparan dan terukur."
+      align="center"
+    />
+
+    <ol class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      {
+        processSteps.map((item) => (
+          <li>
+            <article class="relative h-full rounded-2xl border border-mint-accent bg-mint/40 p-6 transition hover:border-teal-light/50 hover:bg-white hover:shadow-lg">
+              <span class="text-4xl font-extrabold text-mint-accent">{item.step}</span>
+              <h3 class="mt-4 text-lg font-bold text-navy">{item.title}</h3>
+              <p class="mt-2 text-sm leading-relaxed text-body">{item.description}</p>
+            </article>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>
