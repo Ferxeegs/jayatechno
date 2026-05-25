@@ -7,79 +7,106 @@ const cards = [
 ];
 ---
 
-<section id="layanan" class="bg-white py-16 sm:py-24" aria-labelledby="services-heading">
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <div class="grid items-start gap-12 lg:grid-cols-2 lg:gap-16">
-      <div>
-        <h2 id="services-heading" class="text-3xl font-extrabold leading-tight text-navy sm:text-4xl">
+<section id="layanan" class="relative bg-white py-20 sm:py-28 overflow-hidden" aria-labelledby="services-heading">
+  <!-- Glowing blob in background -->
+  <div class="pointer-events-none absolute -right-48 bottom-1/4 h-[400px] w-[400px] rounded-full bg-mint-accent/20 blur-3xl" aria-hidden="true"></div>
+
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+      
+      <!-- Left Column: Title and SVG HUD -->
+      <div class="services-left text-left" data-reveal>
+        <span class="text-xs font-bold uppercase tracking-widest text-teal-light mb-3 block">Portofolio Layanan</span>
+        <h2 id="services-heading" class="text-3xl font-black leading-tight text-navy sm:text-4xl tracking-tight">
           Layanan <span class="highlight-underline">Unggulan</span> Kami
         </h2>
 
-        <div class="relative mt-10" aria-hidden="true">
-          <svg viewBox="0 0 280 300" class="mx-auto w-full max-w-xs text-teal-light/30">
-            <circle cx="140" cy="150" r="120" fill="currentColor" opacity="0.15" />
-          </svg>
-          <svg
-            viewBox="0 0 200 240"
-            class="absolute left-1/2 top-1/2 w-48 -translate-x-1/2 -translate-y-1/2"
-            role="img"
-            aria-label="Ilustrasi layanan digital Jayatechno"
-          >
-            <rect x="60" y="40" width="80" height="60" rx="12" fill="#4A9084" />
-            <rect x="70" y="50" width="60" height="40" rx="6" fill="#0D3B4C" />
-            <circle cx="88" cy="68" r="5" fill="#F9E05E" />
-            <ellipse cx="140" cy="180" rx="50" ry="12" fill="#D1EAE3" />
-            <circle cx="150" cy="120" r="28" fill="none" stroke="#4A9084" stroke-width="3" />
-            <line x1="170" y1="140" x2="190" y2="160" stroke="#4A9084" stroke-width="3" stroke-linecap="round" />
+        <!-- Interactive SVG HUD Graphic -->
+        <div class="relative mt-12 mb-10 select-none flex justify-center" aria-hidden="true">
+          <svg viewBox="0 0 300 300" class="w-full max-w-[280px] drop-shadow-xl">
+            <!-- Outer HUD ring -->
+            <circle cx="150" cy="150" r="130" fill="none" stroke="#D1EAE3" stroke-width="2" stroke-dasharray="8 8" class="hud-outer" />
+            <!-- Inner HUD ring -->
+            <circle cx="150" cy="150" r="105" fill="none" stroke="#4A9084" stroke-width="3" stroke-dasharray="160 50 80 40" class="hud-inner" opacity="0.8" />
+            <!-- Center core -->
+            <circle cx="150" cy="150" r="75" fill="none" stroke="#0D3B4C" stroke-width="2" opacity="0.6" />
+            <circle cx="150" cy="150" r="60" fill="url(#hud-core)" opacity="0.15" />
+            
+            <!-- Graphic Nodes -->
+            <g class="hud-inner">
+              <circle cx="150" cy="45" r="5" fill="#F9E05E" />
+              <line x1="150" y1="45" x2="150" y2="75" stroke="#F9E05E" stroke-width="1.5" />
+              <circle cx="45" cy="150" r="5" fill="#4A9084" />
+              <line x1="45" y1="150" x2="75" y2="150" stroke="#4A9084" stroke-width="1.5" />
+            </g>
+
+            <g class="hud-outer">
+              <circle cx="255" cy="150" r="4" fill="#0D3B4C" />
+              <circle cx="150" cy="255" r="4" fill="#0D3B4C" />
+            </g>
+
+            <!-- Decorative tech markings -->
+            <path d="M110 150 A40 40 0 0 1 190 150" fill="none" stroke="#0D3B4C" stroke-width="3" stroke-linecap="round" />
+            <path d="M125 150 A25 25 0 0 0 175 150" fill="none" stroke="#F9E05E" stroke-width="3.5" stroke-linecap="round" />
+
+            <defs>
+              <radialGradient id="hud-core" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#4A9084" />
+                <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+              </radialGradient>
+            </defs>
           </svg>
         </div>
 
-        <p class="mt-6 text-sm leading-relaxed text-body">
+        <p class="mt-8 text-base leading-relaxed text-body">
           Kami menyediakan berbagai layanan digital yang lengkap untuk memenuhi segala kebutuhan bisnis dan instansi
-          Anda.
+          Anda. Seluruh pengerjaan dipantau dengan metrik kinerja terukur.
         </p>
         <a
-          href="#layanan"
-          class="mt-6 inline-flex items-center gap-2 rounded-full bg-yellow px-6 py-3 text-sm font-bold text-navy transition hover:bg-yellow-bright"
+          href="#kontak"
+          class="mt-8 inline-flex items-center gap-2 rounded-full bg-yellow px-8 py-3.5 text-sm font-bold text-navy shadow-md transition hover:bg-yellow-bright cursor-pointer glow-yellow"
         >
-          Layanan Lainnya <span aria-hidden="true">→</span>
+          Layanan Lainnya
+          <span aria-hidden="true">→</span>
         </a>
       </div>
 
-      <div class="relative">
+      <!-- Right Column: Services Cards Grid -->
+      <div class="relative services-right">
+        <!-- Subtle backplate decoration -->
         <div
-          class="pointer-events-none absolute -inset-4 rounded-3xl bg-gradient-to-br from-slate-100 to-mint-accent/40"
+          class="pointer-events-none absolute -inset-4 rounded-[2.5rem] bg-gradient-to-br from-slate-100 to-mint-accent/20 border border-mint-accent/10"
           aria-hidden="true"
         ></div>
-        <ul class="relative grid gap-4 sm:grid-cols-2">
+        <ul class="relative grid gap-5 sm:grid-cols-2" data-reveal-stagger>
           {
             cards.map((card) => (
-              <li>
+              <li data-reveal-item>
                 <a
                   href="#kontak"
-                  class="group flex min-h-[140px] flex-col justify-between rounded-2xl bg-white p-5 shadow-lg shadow-teal/5 ring-1 ring-mint-accent/50 transition hover:-translate-y-1 hover:shadow-xl"
+                  class="service-grid-card group flex min-h-[160px] flex-col justify-between rounded-3xl border border-slate-100 bg-white p-6 shadow-md transition duration-300 hover:-translate-y-1 hover:border-mint-accent hover:shadow-xl"
                 >
-                  <div class="text-teal-light" aria-hidden="true">
+                  <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-mint transition-colors group-hover:bg-gradient-to-br group-hover:from-teal group-hover:to-navy text-teal-light group-hover:text-yellow duration-300 shadow-sm" aria-hidden="true">
                     {card.icon === 'chart' && (
-                      <svg class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                      <svg class="h-6 w-6 transition-transform group-hover:scale-105" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
                         <path d="M3 17l6-6 4 4 8-10" stroke-linecap="round" stroke-linejoin="round" />
                       </svg>
                     )}
                     {card.icon === 'dev' && (
-                      <svg class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                      <svg class="h-6 w-6 transition-transform group-hover:scale-105" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
                         <rect x="2" y="3" width="20" height="14" rx="2" />
                         <path d="M8 21h8M12 17v4" stroke-linecap="round" />
                       </svg>
                     )}
                     {card.icon === 'social' && (
-                      <svg class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                      <svg class="h-6 w-6 transition-transform group-hover:scale-105" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
                         <rect x="2" y="2" width="20" height="20" rx="5" />
                         <circle cx="12" cy="12" r="4" />
                         <circle cx="17.5" cy="6.5" r="1" fill="currentColor" />
                       </svg>
                     )}
                     {card.icon === 'cart' && (
-                      <svg class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                      <svg class="h-6 w-6 transition-transform group-hover:scale-105" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
                         <path d="M6 6h15l-1.5 9h-12z" stroke-linejoin="round" />
                         <circle cx="9" cy="20" r="1" fill="currentColor" />
                         <circle cx="18" cy="20" r="1" fill="currentColor" />
@@ -87,14 +114,23 @@ const cards = [
                       </svg>
                     )}
                   </div>
-                  <h3 class="mt-4 text-sm font-bold leading-snug text-navy sm:text-base">{card.title}</h3>
-                  <span class="mt-4 text-teal-light transition group-hover:translate-x-1" aria-hidden="true">→</span>
+                  
+                  <div class="mt-5 text-left">
+                    <h3 class="text-base font-extrabold leading-snug text-navy tracking-tight group-hover:text-teal transition-colors">
+                      {card.title}
+                    </h3>
+                    <div class="flex items-center gap-1.5 text-teal-light font-bold text-xs mt-3 opacity-80 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300">
+                      <span>Mulai Diskusi</span>
+                      <span aria-hidden="true">→</span>
+                    </div>
+                  </div>
                 </a>
               </li>
             ))
           }
         </ul>
       </div>
+      
     </div>
   </div>
 </section>

@@ -4,94 +4,102 @@ import { site } from '../data/site';
 
 <section
   id="kontak"
-  class="relative overflow-hidden bg-gradient-to-br from-mint via-white to-mint-accent/30 py-16 sm:py-24"
+  class="relative overflow-hidden bg-gradient-to-b from-white via-mint/30 to-white py-20 sm:py-28"
   aria-labelledby="contact-heading"
 >
+  <!-- Decorative Background Shapes -->
   <div
-    class="pointer-events-none absolute -right-20 top-0 h-96 w-96 rotate-12 bg-teal-light/10"
-    style="clip-path: polygon(30% 0%, 100% 0%, 70% 100%, 0% 100%)"
+    class="pointer-events-none absolute -right-32 top-0 h-96 w-96 rounded-full bg-teal-light/10 blur-3xl"
+    aria-hidden="true"
+  ></div>
+  <div
+    class="pointer-events-none absolute -left-32 bottom-0 h-96 w-96 rounded-full bg-mint-accent/20 blur-3xl"
     aria-hidden="true"
   ></div>
 
-  <div class="relative mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:gap-20 lg:px-8">
-    <div class="rounded-[2rem] bg-teal-light p-3 sm:p-4">
+  <div class="relative mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:gap-20 lg:px-8 z-10">
+    <!-- Left Column: Glassmorphic Form Card -->
+    <div class="contact-left-wrapper rounded-[2.5rem] bg-gradient-to-br from-mint-accent/40 to-teal-light/25 p-3 shadow-xl sm:p-4" data-reveal>
       <form
-        class="rounded-2xl bg-white p-6 sm:p-8"
+        class="rounded-[2rem] border border-white bg-white/80 p-6 sm:p-10 shadow-inner backdrop-blur-md text-left"
         method="post"
         action="#"
         aria-label="Formulir konsultasi"
       >
-        <div class="space-y-5">
+        <div class="space-y-6">
           <div>
-            <label for="nama" class="mb-1.5 block text-sm font-semibold text-navy">Nama</label>
+            <label for="nama" class="mb-2 block text-sm font-bold text-navy">Nama Lengkap</label>
             <input
               type="text"
               id="nama"
               name="nama"
               required
               autocomplete="name"
-              placeholder="Nama"
-              class="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm text-navy outline-none transition focus:border-teal-light focus:ring-2 focus:ring-teal-light/20"
+              placeholder="Masukkan nama Anda"
+              class="w-full rounded-xl border border-slate-100 bg-white/90 px-4 py-3.5 text-sm text-navy outline-none transition duration-300 focus:border-teal-light focus:ring-4 focus:ring-teal-light/10 shadow-sm"
             />
           </div>
           <div>
-            <label for="email" class="mb-1.5 block text-sm font-semibold text-navy">Email</label>
+            <label for="email" class="mb-2 block text-sm font-bold text-navy">Alamat Email</label>
             <input
               type="email"
               id="email"
               name="email"
               required
               autocomplete="email"
-              placeholder="Email"
-              class="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm text-navy outline-none transition focus:border-teal-light focus:ring-2 focus:ring-teal-light/20"
+              placeholder="Masukkan email Anda"
+              class="w-full rounded-xl border border-slate-100 bg-white/90 px-4 py-3.5 text-sm text-navy outline-none transition duration-300 focus:border-teal-light focus:ring-4 focus:ring-teal-light/10 shadow-sm"
             />
           </div>
           <div>
-            <label for="pesan" class="mb-1.5 block text-sm font-semibold text-navy">Pesan</label>
+            <label for="pesan" class="mb-2 block text-sm font-bold text-navy">Deskripsi Kebutuhan</label>
             <textarea
               id="pesan"
               name="pesan"
               required
               rows="4"
-              placeholder="Pesan"
-              class="w-full resize-y rounded-xl border border-slate-200 px-4 py-3 text-sm text-navy outline-none transition focus:border-teal-light focus:ring-2 focus:ring-teal-light/20"
+              placeholder="Ceritakan proyek atau kebutuhan digital Anda..."
+              class="w-full resize-y rounded-xl border border-slate-100 bg-white/90 px-4 py-3.5 text-sm text-navy outline-none transition duration-300 focus:border-teal-light focus:ring-4 focus:ring-teal-light/10 shadow-sm"
             ></textarea>
           </div>
         </div>
         <button
           type="submit"
-          class="mt-6 w-full rounded-xl bg-yellow py-3.5 text-sm font-bold text-navy transition hover:bg-yellow-bright focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow"
+          class="mt-8 w-full cursor-pointer rounded-xl bg-yellow py-4 text-sm font-extrabold text-navy transition duration-300 hover:bg-yellow-bright focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow"
         >
-          Kirim Pesan
+          Kirim Pesan Sekarang
         </button>
       </form>
     </div>
 
-    <div>
-      <h2 id="contact-heading" class="text-3xl font-extrabold leading-tight text-navy sm:text-4xl">
+    <!-- Right Column: Content Detail -->
+    <div class="contact-right-wrapper text-left" data-reveal>
+      <span class="text-xs font-bold uppercase tracking-widest text-teal-light mb-3 block">Hubungi Kami</span>
+      <h2 id="contact-heading" class="text-3xl font-black leading-tight text-navy sm:text-4xl tracking-tight">
         Jadwalkan <span class="highlight-underline">Konsultasi</span> Dengan Praktisi Kami
       </h2>
-      <p class="mt-5 text-base leading-relaxed text-body">
+      <p class="mt-6 text-base leading-relaxed text-body sm:text-lg">
         Ceritakan kebutuhan digital Anda — tim kami siap memberikan rekomendasi strategi, estimasi, dan solusi yang
         sesuai dengan tujuan bisnis atau instansi Anda.
       </p>
 
-      <address class="mt-10 space-y-6 not-italic">
-        <div class="flex gap-4">
-          <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-mint-accent" aria-hidden="true">
-            <svg class="h-6 w-6 text-teal-light" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <address class="mt-12 space-y-6 not-italic">
+        <div class="contact-item flex gap-5 rounded-2xl border border-slate-100 bg-white p-5 shadow-sm transition duration-300 hover:border-mint-accent hover:shadow-md group">
+          <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-mint to-mint-accent text-teal-light group-hover:from-teal group-hover:to-navy group-hover:text-yellow transition-all duration-300 shadow-sm" aria-hidden="true">
+            <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
               <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
               <circle cx="12" cy="9" r="2.5" />
             </svg>
           </span>
           <div>
-            <h3 class="font-bold text-navy">Kantor Kami</h3>
-            <p class="mt-1 text-sm text-body">{site.address}</p>
+            <h3 class="font-extrabold text-navy tracking-tight">Kantor Kami</h3>
+            <p class="mt-1.5 text-sm text-body leading-relaxed">{site.address}</p>
           </div>
         </div>
-        <div class="flex gap-4">
-          <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-mint-accent" aria-hidden="true">
-            <svg class="h-6 w-6 text-teal-light" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        
+        <div class="contact-item flex gap-5 rounded-2xl border border-slate-100 bg-white p-5 shadow-sm transition duration-300 hover:border-mint-accent hover:shadow-md group">
+          <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-mint to-mint-accent text-teal-light group-hover:from-teal group-hover:to-navy group-hover:text-yellow transition-all duration-300 shadow-sm" aria-hidden="true">
+            <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
               <path
                 d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
                 stroke-linejoin="round"
@@ -100,9 +108,9 @@ import { site } from '../data/site';
             </svg>
           </span>
           <div>
-            <h3 class="font-bold text-navy">Email</h3>
-            <p class="mt-1">
-              <a href={`mailto:${site.email}`} class="text-sm text-teal-light hover:underline">{site.email}</a>
+            <h3 class="font-extrabold text-navy tracking-tight">Surat Elektronik (Email)</h3>
+            <p class="mt-1.5">
+              <a href={`mailto:${site.email}`} class="text-sm font-semibold text-teal-light hover:text-teal hover:underline transition-colors">{site.email}</a>
             </p>
           </div>
         </div>

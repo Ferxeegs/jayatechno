@@ -8,7 +8,11 @@ const featured = projects.find((p) => p.featured) ?? projects[0];
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <p id="featured-heading" class="sr-only">Proyek unggulan</p>
 
-    <article class="group overflow-hidden rounded-3xl bg-navy shadow-2xl shadow-teal/15 lg:grid lg:grid-cols-2">
+    <article
+      data-reveal
+      data-reveal-variant="scale"
+      class="hover-lift group overflow-hidden rounded-3xl bg-navy shadow-2xl shadow-teal/15 lg:grid lg:grid-cols-2"
+    >
       <div
         class:list={['relative min-h-[280px] bg-gradient-to-br lg:min-h-[400px]', featured.gradient]}
         role="img"

@@ -6,32 +6,39 @@ import { stats } from '../../data/profile';
 
 <section class="relative overflow-hidden bg-gradient-to-br from-teal via-[#0a4a5c] to-navy text-white" aria-labelledby="profile-hero-heading">
   <div class="absolute inset-0 opacity-20" aria-hidden="true">
-    <div class="absolute -right-20 -top-20 h-96 w-96 rounded-full bg-yellow/30 blur-3xl"></div>
-    <div class="absolute -bottom-32 -left-20 h-80 w-80 rounded-full bg-teal-light/40 blur-3xl"></div>
+    <div class="page-hero-glow absolute -right-20 -top-20 h-96 w-96 rounded-full bg-yellow/30 blur-3xl"></div>
+    <div class="page-hero-glow-delay absolute -bottom-32 -left-20 h-80 w-80 rounded-full bg-teal-light/40 blur-3xl"></div>
   </div>
 
   <div class="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
-    <Breadcrumb
-      items={[
-        { label: 'Beranda', href: '/' },
-        { label: 'Profil Perusahaan' },
-      ]}
-    />
+    <div data-reveal-hero>
+      <Breadcrumb
+        light
+        items={[
+          { label: 'Beranda', href: '/' },
+          { label: 'Profil Perusahaan' },
+        ]}
+      />
+    </div>
 
     <div class="grid items-end gap-12 lg:grid-cols-2 lg:gap-16">
       <div>
-        <p class="text-sm font-semibold uppercase tracking-widest text-yellow">Tentang Kami</p>
-        <h1 id="profile-hero-heading" class="mt-4 text-balance text-4xl font-extrabold leading-tight sm:text-5xl lg:text-6xl">
+        <p data-reveal-hero class="text-sm font-semibold uppercase tracking-widest text-yellow">Tentang Kami</p>
+        <h1
+          data-reveal-hero
+          id="profile-hero-heading"
+          class="mt-4 text-balance text-4xl font-extrabold leading-tight sm:text-5xl lg:text-6xl"
+        >
           Profil Perusahaan {site.name}
         </h1>
-        <p class="mt-6 max-w-xl text-lg leading-relaxed text-white/85">
+        <p data-reveal-hero class="mt-6 max-w-xl text-lg leading-relaxed text-white/85">
           {site.legalName} adalah perusahaan teknologi dan digital marketing yang berkomitmen membantu
           transformasi digital bisnis, instansi pemerintah, pendidikan, dan UMKM di seluruh Indonesia.
         </p>
-        <div class="mt-8 flex flex-wrap gap-4">
+        <div data-reveal-hero class="mt-8 flex flex-wrap gap-4">
           <a
             href="/#kontak"
-            class="inline-flex items-center rounded-full bg-yellow px-8 py-3.5 text-sm font-bold text-navy transition hover:bg-yellow-bright"
+            class="inline-flex items-center rounded-full bg-yellow px-8 py-3.5 text-sm font-bold text-navy transition hover:bg-yellow-bright hover:scale-105"
           >
             Hubungi Kami
           </a>
@@ -44,10 +51,13 @@ import { stats } from '../../data/profile';
         </div>
       </div>
 
-      <dl class="grid grid-cols-2 gap-4 sm:gap-5">
+      <dl class="grid grid-cols-2 gap-4 sm:gap-5" data-reveal-stagger>
         {
           stats.map((stat) => (
-            <div class="rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-sm sm:p-6">
+            <div
+              data-reveal-item
+              class="rounded-2xl border border-white/10 bg-white/10 p-5 sm:p-6"
+            >
               <dt class="text-3xl font-extrabold text-yellow sm:text-4xl">{stat.value}</dt>
               <dd class="mt-1 text-sm font-medium text-white/75">{stat.label}</dd>
             </div>

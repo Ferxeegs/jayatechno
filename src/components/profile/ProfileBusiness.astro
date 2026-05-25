@@ -12,12 +12,16 @@ import { businessUnits } from '../../data/profile';
       subtitle="Empat pilar layanan yang menjadi fondasi solusi end-to-end kami."
       align="center"
       light
+      reveal
     />
 
-    <div class="mt-14 grid gap-6 sm:grid-cols-2">
+    <div class="mt-14 grid gap-6 sm:grid-cols-2" data-reveal-stagger>
       {
         businessUnits.map((unit) => (
-          <article class="group rounded-2xl border border-white/10 bg-white/5 p-7 transition hover:border-yellow/40 hover:bg-white/10">
+          <article
+            data-reveal-item
+            class="hover-lift group rounded-2xl border border-white/10 bg-white/5 p-7 transition hover:border-yellow/40 hover:bg-white/10"
+          >
             <div class="flex h-14 w-14 items-center justify-center rounded-2xl bg-yellow/20 text-yellow" aria-hidden="true">
               {unit.icon === 'marketing' && (
                 <svg class="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">

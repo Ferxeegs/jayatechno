@@ -11,13 +11,14 @@ import { milestones } from '../../data/profile';
       highlight="Kami"
       subtitle="Tonggak penting dalam pertumbuhan Jayatechno sebagai mitra digital terpercaya."
       align="center"
+      reveal
     />
 
-    <ol class="relative mt-14 space-y-0">
+    <ol class="relative mt-14 space-y-0" data-reveal-stagger>
       <div class="absolute left-[19px] top-2 h-[calc(100%-2rem)] w-0.5 bg-gradient-to-b from-teal-light via-yellow to-mint-accent" aria-hidden="true"></div>
       {
         milestones.map((item) => (
-          <li class="relative flex gap-6 pb-10 last:pb-0">
+          <li data-reveal-item class="relative flex gap-6 pb-10 last:pb-0">
             <div class="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-4 border-white bg-yellow shadow-md" aria-hidden="true">
               <span class="h-2 w-2 rounded-full bg-teal"></span>
             </div>

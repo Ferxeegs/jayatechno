@@ -6,15 +6,17 @@ interface Props {
   subtitle?: string;
   align?: 'left' | 'center';
   light?: boolean;
+  reveal?: boolean;
 }
 
-const { id, title, highlight, subtitle, align = 'left', light = false } = Astro.props;
+const { id, title, highlight, subtitle, align = 'left', light = false, reveal = false } = Astro.props;
 
 const hasHighlight = highlight && title.includes(highlight);
 const parts = hasHighlight ? title.split(highlight) : null;
 ---
 
 <div
+  data-reveal={reveal || undefined}
   class:list={[
     align === 'center' && 'mx-auto max-w-3xl text-center',
   ]}

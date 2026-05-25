@@ -6,8 +6,8 @@ import { companyFacts } from '../../data/profile';
 
 <section class="bg-white py-16 sm:py-24" aria-labelledby="overview-heading">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <div class="grid gap-12 lg:grid-cols-5 lg:gap-16">
-      <div class="lg:col-span-3">
+    <div class="grid gap-12 lg:grid-cols-5 lg:gap-16" data-reveal-stagger>
+      <div class="lg:col-span-3" data-reveal-item data-reveal-variant="left">
         <SectionHeading
           id="overview-heading"
           title="Tentang Jayatechno"
@@ -32,8 +32,8 @@ import { companyFacts } from '../../data/profile';
         </div>
       </div>
 
-      <aside class="lg:col-span-2">
-        <div class="rounded-3xl border border-mint-accent bg-mint p-6 sm:p-8">
+      <aside class="lg:col-span-2" data-reveal-item data-reveal-variant="right">
+        <div class="hover-lift rounded-3xl border border-mint-accent bg-mint p-6 sm:p-8">
           <h3 class="text-sm font-bold uppercase tracking-wide text-teal">Fakta Perusahaan</h3>
           <dl class="mt-6 space-y-5">
             {

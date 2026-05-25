@@ -11,12 +11,16 @@ import { leadership } from '../../data/profile';
       highlight="Manajemen"
       subtitle="Dipimpin oleh praktisi berpengalaman di bidang teknologi, bisnis, dan pemasaran digital."
       align="center"
+      reveal
     />
 
-    <div class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+    <div class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4" data-reveal-stagger>
       {
         leadership.map((person) => (
-          <article class="group overflow-hidden rounded-2xl border border-mint-accent bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl hover:shadow-teal/10">
+          <article
+            data-reveal-item
+            class="hover-lift group overflow-hidden rounded-2xl border border-mint-accent bg-white shadow-sm"
+          >
             <div
               class="aspect-[4/5] bg-gradient-to-br from-mint-accent via-mint to-teal-light/30"
               role="img"
@@ -38,7 +42,7 @@ import { leadership } from '../../data/profile';
       }
     </div>
 
-    <p class="mx-auto mt-10 max-w-2xl text-center text-sm text-body">
+    <p data-reveal class="mx-auto mt-10 max-w-2xl text-center text-sm text-body">
       Di balik kepemimpinan, 45+ profesional di divisi engineering, creative, marketing, dan project management
       siap mendukung proyek Anda.
     </p>

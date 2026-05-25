@@ -11,9 +11,10 @@ import { categories, projects } from '../../data/portfolio';
       highlight="Proyek"
       subtitle="Filter berdasarkan kategori untuk menemukan karya yang relevan dengan kebutuhan Anda."
       align="center"
+      reveal
     />
 
-    <div class="mt-10 flex flex-wrap justify-center gap-2" role="tablist" aria-label="Filter kategori portfolio">
+    <div class="mt-10 flex flex-wrap justify-center gap-2" role="tablist" aria-label="Filter kategori portfolio" data-reveal>
       {
         categories.map((cat, i) => (
           <button
@@ -22,7 +23,7 @@ import { categories, projects } from '../../data/portfolio';
             aria-selected={i === 0}
             data-filter={cat.id}
             class:list={[
-              'portfolio-filter rounded-full px-5 py-2.5 text-sm font-semibold transition',
+              'portfolio-filter rounded-full px-5 py-2.5 text-sm font-semibold transition duration-300',
               i === 0
                 ? 'bg-teal text-white shadow-md shadow-teal/20'
                 : 'bg-white text-teal hover:bg-white/90',
@@ -38,19 +39,19 @@ import { categories, projects } from '../../data/portfolio';
       Tidak ada proyek dalam kategori ini.
     </p>
 
-    <ul id="portfolio-list" class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3" role="list">
+    <ul id="portfolio-list" class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3" role="list" data-reveal-stagger>
       {
         projects
           .filter((p) => !p.featured)
           .map((project) => (
-            <li data-category={project.category} class="portfolio-item">
-              <article class="group flex h-full flex-col overflow-hidden rounded-2xl bg-white shadow-lg shadow-teal/5 ring-1 ring-mint-accent/50 transition hover:-translate-y-1 hover:shadow-xl">
+            <li data-reveal-item data-category={project.category} class="portfolio-item">
+              <article class="hover-lift group flex h-full flex-col overflow-hidden rounded-2xl bg-white shadow-lg shadow-teal/5 ring-1 ring-mint-accent/50">
                 <div
                   class:list={['relative aspect-[16/10] bg-gradient-to-br', project.gradient]}
                   role="img"
                   aria-label={`Thumbnail ${project.title}`}
                 >
-                  <div class="absolute inset-0 flex items-end bg-gradient-to-t from-navy/80 via-navy/20 to-transparent p-5 opacity-0 transition group-hover:opacity-100">
+                  <div class="absolute inset-0 flex items-end bg-gradient-to-t from-navy/80 via-navy/20 to-transparent p-5 opacity-0 transition duration-300 group-hover:opacity-100">
                     <span class="text-sm font-medium text-white">Lihat detail ↓</span>
                   </div>
                   <span class="absolute right-4 top-4 rounded-full bg-white/90 px-3 py-1 text-xs font-bold text-teal">
@@ -122,4 +123,5 @@ import { categories, projects } from '../../data/portfolio';
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
+
 </style>
