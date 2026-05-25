@@ -47,7 +47,7 @@ const services = [
           <article
             data-reveal-item
             class:list={[
-              'solution-card group rounded-3xl border p-8 transition duration-300',
+              'solution-card transform-gpu group rounded-3xl border p-8 transition duration-300 will-change-[transform,opacity]',
               service.featured
                 ? 'glass-card-featured relative overflow-hidden bg-gradient-to-br from-white via-mint/30 to-mint-accent/20 shadow-lg hover:-translate-y-1'
                 : 'glass-card hover:-translate-y-1 hover:border-mint-accent hover:shadow-xl hover:shadow-teal/5',

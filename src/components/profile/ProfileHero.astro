@@ -56,7 +56,7 @@ import { stats } from '../../data/profile';
           stats.map((stat) => (
             <div
               data-reveal-item
-              class="rounded-2xl border border-white/10 bg-white/10 p-5 sm:p-6"
+              class="transform-gpu will-change-[transform,opacity] rounded-2xl border border-white/10 bg-white/10 p-5 sm:p-6"
             >
               <dt class="text-3xl font-extrabold text-yellow sm:text-4xl">{stat.value}</dt>
               <dd class="mt-1 text-sm font-medium text-white/75">{stat.label}</dd>
