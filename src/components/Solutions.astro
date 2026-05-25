@@ -24,14 +24,14 @@ const services = [
 ];
 ---
 
-<section id="solusi" class="relative overflow-hidden bg-white py-20 sm:py-28" aria-labelledby="solutions-heading">
+<section id="solusi" class="relative overflow-hidden bg-white py-14 sm:py-28" aria-labelledby="solutions-heading">
   <div class="pointer-events-none absolute -left-48 top-1/4 h-96 w-96 rounded-full bg-mint-accent/20 blur-3xl" aria-hidden="true"></div>
 
   <div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="grid items-end gap-8 lg:grid-cols-2 lg:gap-16" data-reveal>
       <div>
         <span class="mb-3 block text-xs font-bold uppercase tracking-widest text-teal-light">Layanan Solutif</span>
-        <h2 id="solutions-heading" class="text-3xl font-extrabold leading-tight text-navy sm:text-4xl">
+        <h2 id="solutions-heading" class="text-2xl font-extrabold leading-tight text-navy sm:text-4xl">
           Solusi untuk Kinerja yang <span class="highlight-underline">Lebih</span> Efektif
         </h2>
       </div>
@@ -41,13 +41,13 @@ const services = [
       </p>
     </div>
 
-    <div class="mt-16 grid gap-8 md:grid-cols-3" data-reveal-stagger>
+    <div class="mt-10 grid gap-5 sm:mt-16 sm:gap-8 md:grid-cols-3" data-reveal-stagger>
       {
         services.map((service) => (
           <article
             data-reveal-item
             class:list={[
-              'solution-card transform-gpu group rounded-3xl border p-8 transition duration-300 will-change-[transform,opacity]',
+              'solution-card transform-gpu group rounded-2xl border p-5 transition duration-300 will-change-[transform,opacity] sm:rounded-3xl sm:p-8',
               service.featured
                 ? 'glass-card-featured relative overflow-hidden bg-gradient-to-br from-white via-mint/30 to-mint-accent/20 shadow-lg hover:-translate-y-1'
                 : 'glass-card hover:-translate-y-1 hover:border-mint-accent hover:shadow-xl hover:shadow-teal/5',

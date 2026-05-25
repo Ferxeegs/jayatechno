@@ -26,6 +26,10 @@
     background: radial-gradient(circle at 10% 20%, rgba(240, 249, 247, 0.4) 0%, rgba(255, 255, 255, 1) 90%);
   }
 
+  main {
+    overflow-x: clip;
+  }
+
   ::selection {
     background-color: var(--color-yellow);
     color: var(--color-teal);

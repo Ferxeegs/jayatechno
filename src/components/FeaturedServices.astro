@@ -7,7 +7,7 @@ const cards = [
 ];
 ---
 
-<section id="layanan" class="relative bg-white py-20 sm:py-28 overflow-hidden" aria-labelledby="services-heading">
+<section id="layanan" class="relative overflow-hidden bg-white py-14 sm:py-28" aria-labelledby="services-heading">
   <!-- Glowing blob in background -->
   <div class="pointer-events-none absolute -right-48 bottom-1/4 h-[400px] w-[400px] rounded-full bg-mint-accent/20 blur-3xl" aria-hidden="true"></div>
 
@@ -17,13 +17,13 @@ const cards = [
       <!-- Left Column: Title and SVG HUD -->
       <div class="services-left text-left" data-reveal>
         <span class="text-xs font-bold uppercase tracking-widest text-teal-light mb-3 block">Portofolio Layanan</span>
-        <h2 id="services-heading" class="text-3xl font-black leading-tight text-navy sm:text-4xl tracking-tight">
+        <h2 id="services-heading" class="text-2xl font-black leading-tight tracking-tight text-navy sm:text-4xl">
           Layanan <span class="highlight-underline">Unggulan</span> Kami
         </h2>
 
         <!-- Interactive SVG HUD Graphic -->
-        <div class="relative mt-12 mb-10 select-none flex justify-center" aria-hidden="true">
-          <svg viewBox="0 0 300 300" class="w-full max-w-[280px] drop-shadow-xl">
+        <div class="relative mt-8 mb-6 flex select-none justify-center sm:mt-12 sm:mb-10" aria-hidden="true">
+          <svg viewBox="0 0 300 300" class="w-full max-w-[220px] drop-shadow-xl sm:max-w-[280px]">
             <!-- Outer HUD ring -->
             <circle cx="150" cy="150" r="130" fill="none" stroke="#D1EAE3" stroke-width="2" stroke-dasharray="8 8" class="hud-outer" />
             <!-- Inner HUD ring -->
@@ -64,7 +64,7 @@ const cards = [
         </p>
         <a
           href="#kontak"
-          class="mt-8 inline-flex items-center gap-2 rounded-full bg-yellow px-8 py-3.5 text-sm font-bold text-navy shadow-md transition hover:bg-yellow-bright cursor-pointer glow-yellow"
+          class="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-yellow px-8 py-3.5 text-sm font-bold text-navy shadow-md transition hover:bg-yellow-bright glow-yellow sm:mt-8 sm:w-auto"
         >
           Layanan Lainnya
           <span aria-hidden="true">→</span>
@@ -72,13 +72,13 @@ const cards = [
       </div>
 
       <!-- Right Column: Services Cards Grid -->
-      <div class="relative services-right">
+      <div class="relative services-right min-w-0 overflow-hidden">
         <!-- Subtle backplate decoration -->
         <div
-          class="pointer-events-none absolute -inset-4 rounded-[2.5rem] bg-gradient-to-br from-slate-100 to-mint-accent/20 border border-mint-accent/10"
+          class="pointer-events-none absolute -inset-2 rounded-2xl border border-mint-accent/10 bg-gradient-to-br from-slate-100 to-mint-accent/20 sm:-inset-4 sm:rounded-[2.5rem]"
           aria-hidden="true"
         ></div>
-        <ul class="relative grid gap-5 sm:grid-cols-2" data-reveal-stagger>
+        <ul class="relative grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5" data-reveal-stagger>
           {
             cards.map((card) => (
               <li data-reveal-item>

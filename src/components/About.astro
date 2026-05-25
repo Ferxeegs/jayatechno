@@ -15,16 +15,82 @@ const collageCards = [
 ];
 ---
 
-<section id="profil" class="relative bg-white py-20 sm:py-28 overflow-hidden" aria-labelledby="about-heading">
+<section id="profil" class="relative overflow-hidden bg-white py-14 sm:py-28" aria-labelledby="about-heading">
   <!-- Decorative grid background -->
   <div class="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(#d1eae3_1px,transparent_1px)] [background-size:24px_24px] opacity-30"></div>
   <div class="pointer-events-none absolute -right-32 top-1/3 h-96 w-96 rounded-full bg-mint-accent/20 blur-3xl" aria-hidden="true"></div>
 
-  <div class="mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:gap-20 lg:px-8 relative z-10">
-    <!-- Left Column: Scattered Dynamic Collage (Assembles on scroll) -->
-    <div class="relative mx-auto aspect-square w-full max-w-md lg:max-w-none min-h-[400px]">
+  <div class="relative z-10 mx-auto grid max-w-7xl items-center gap-10 px-4 sm:gap-12 sm:px-6 lg:grid-cols-2 lg:gap-20 lg:px-8">
+    <!-- Mobile: compact 2-column grid (no absolute overflow) -->
+    <div class="order-2 grid grid-cols-2 gap-3 sm:hidden" data-reveal-stagger>
+      {
+        collageCards.map((card, i) => (
+          <div
+            data-reveal-item
+            class:list={[
+              'overflow-hidden rounded-2xl border border-white bg-white p-3 shadow-lg',
+              card.size,
+              i % 2 === 1 ? 'translate-y-3' : '',
+            ]}
+            role="img"
+            aria-label={card.alt}
+          >
+            {card.type === 'seo' && (
+              <div class="flex h-full flex-col justify-between text-left">
+                <div class="flex items-center justify-between">
+                  <span class="text-[9px] font-extrabold uppercase tracking-wider text-teal-light">SEO Rank</span>
+                  <span class="rounded bg-yellow/80 px-1 text-[9px] font-bold text-teal">▲ 24%</span>
+                </div>
+                <svg class="mt-2 h-8 w-full" viewBox="0 0 100 30" fill="none">
+                  <path d="M0 25 C15 25, 25 10, 45 15 C65 20, 75 2, 100 5" stroke="#4A9084" stroke-width="2.5" stroke-linecap="round" />
+                </svg>
+              </div>
+            )}
+            {card.type === 'code' && (
+              <div class="flex h-full flex-col font-mono text-[8px] leading-normal text-teal/80">
+                <p><span class="text-[#ff79c6]">const</span> app = () =&gt; &#123;</p>
+                <p class="pl-2 text-teal-light">&lt;Solutions /&gt;</p>
+              </div>
+            )}
+            {card.type === 'chart' && (
+              <div class="flex h-full items-center justify-between gap-2">
+                <span class="text-lg font-black text-teal">99%</span>
+                <span class="text-[8px] font-black uppercase text-navy">Speed</span>
+              </div>
+            )}
+            {card.type === 'growth' && (
+              <div class="flex h-full items-end gap-1">
+                <div class="h-6 w-2 rounded-t bg-mint-accent"></div>
+                <div class="h-8 w-2 rounded-t bg-teal-light"></div>
+                <div class="h-10 w-2 rounded-t bg-teal"></div>
+              </div>
+            )}
+            {card.type === 'browser' && (
+              <div class="h-full rounded bg-mint/50 p-1">
+                <div class="mb-1 h-2 w-full rounded bg-white"></div>
+                <div class="grid grid-cols-2 gap-1">
+                  <div class="h-6 rounded bg-mint-accent/40"></div>
+                  <div class="h-6 rounded bg-mint-accent/60"></div>
+                </div>
+              </div>
+            )}
+            {card.type === 'nodes' && (
+              <svg class="h-full w-full text-teal-light" viewBox="0 0 100 50">
+                <circle cx="20" cy="25" r="4" fill="currentColor" />
+                <circle cx="50" cy="15" r="5" fill="#0D3B4C" />
+                <circle cx="80" cy="25" r="5" fill="#F9E05E" />
+                <line x1="24" y1="25" x2="76" y2="25" stroke="#d1eae3" stroke-width="1.5" />
+              </svg>
+            )}
+          </div>
+        ))
+      }
+    </div>
+
+    <!-- Desktop: scattered collage -->
+    <div class="relative order-2 mx-auto hidden aspect-square w-full min-h-[400px] max-w-md sm:order-1 sm:block lg:max-w-none">
       <div
-        class="absolute inset-4 rounded-[2.5rem] bg-mint-accent/40 blur-sm border border-white/80"
+        class="absolute inset-4 rounded-[2.5rem] border border-white/80 bg-mint-accent/40 blur-sm"
         aria-hidden="true"
       ></div>
       <div class="relative h-full w-full select-none" data-reveal-stagger>
@@ -150,10 +216,10 @@ const collageCards = [
       </div>
     </div>
 
-    <!-- Right Column: Content Detail -->
-    <div class="about-content text-left" data-reveal>
-      <span class="text-xs font-bold uppercase tracking-widest text-teal-light mb-3 block">Profil Perusahaan</span>
-      <h2 id="about-heading" class="text-3xl font-black leading-tight text-navy sm:text-4xl tracking-tight">
+    <!-- Content -->
+    <div class="about-content order-1 text-left lg:order-2" data-reveal>
+      <span class="mb-3 block text-xs font-bold uppercase tracking-widest text-teal-light">Profil Perusahaan</span>
+      <h2 id="about-heading" class="text-2xl font-black leading-tight tracking-tight text-navy sm:text-4xl">
         Ratusan Client <span class="highlight-underline">Sukses Terhandle</span>
       </h2>
       <p class="mt-6 text-base leading-relaxed text-body sm:text-lg">
@@ -183,7 +249,7 @@ const collageCards = [
       <div class="about-action">
         <a
           href="/profil"
-          class="mt-10 inline-flex items-center gap-2 rounded-full bg-yellow px-8 py-4 text-sm font-bold text-navy shadow-md transition hover:bg-yellow-bright hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow"
+          class="mt-8 inline-flex w-full items-center justify-center gap-2 rounded-full bg-yellow px-8 py-3.5 text-sm font-bold text-navy shadow-md transition hover:bg-yellow-bright hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow sm:mt-10 sm:w-auto sm:py-4"
         >
           Profil Lengkap
           <span aria-hidden="true" class="group-hover:translate-x-1 transition-transform">→</span>
