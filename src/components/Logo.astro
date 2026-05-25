@@ -1,0 +1,36 @@
+---
+import { site } from '../data/site';
+
+interface Props {
+  class?: string;
+  showText?: boolean;
+}
+
+const { class: className = '', showText = true } = Astro.props;
+---
+
+<a
+  href="#beranda"
+  class:list={['inline-flex items-center gap-2.5 no-underline', className]}
+  aria-label={`${site.name} — kembali ke beranda`}
+>
+  <svg
+    width="36"
+    height="36"
+    viewBox="0 0 36 36"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+    class="shrink-0"
+  >
+    <rect x="2" y="2" width="14" height="14" rx="3" fill="#F9E05E" />
+    <rect x="20" y="2" width="14" height="14" rx="3" fill="#F97316" />
+    <rect x="2" y="20" width="14" height="14" rx="3" fill="#7DD3FC" />
+    <rect x="20" y="20" width="14" height="14" rx="3" fill="#4A9084" />
+  </svg>
+  {
+    showText && (
+      <span class="text-xl font-bold tracking-tight text-teal lowercase">{site.name}</span>
+    )
+  }
+</a>

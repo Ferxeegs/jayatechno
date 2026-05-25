@@ -1,0 +1,112 @@
+---
+import { site } from '../data/site';
+---
+
+<section
+  id="kontak"
+  class="relative overflow-hidden bg-gradient-to-br from-mint via-white to-mint-accent/30 py-16 sm:py-24"
+  aria-labelledby="contact-heading"
+>
+  <div
+    class="pointer-events-none absolute -right-20 top-0 h-96 w-96 rotate-12 bg-teal-light/10"
+    style="clip-path: polygon(30% 0%, 100% 0%, 70% 100%, 0% 100%)"
+    aria-hidden="true"
+  ></div>
+
+  <div class="relative mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:gap-20 lg:px-8">
+    <div class="rounded-[2rem] bg-teal-light p-3 sm:p-4">
+      <form
+        class="rounded-2xl bg-white p-6 sm:p-8"
+        method="post"
+        action="#"
+        aria-label="Formulir konsultasi"
+      >
+        <div class="space-y-5">
+          <div>
+            <label for="nama" class="mb-1.5 block text-sm font-semibold text-navy">Nama</label>
+            <input
+              type="text"
+              id="nama"
+              name="nama"
+              required
+              autocomplete="name"
+              placeholder="Nama"
+              class="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm text-navy outline-none transition focus:border-teal-light focus:ring-2 focus:ring-teal-light/20"
+            />
+          </div>
+          <div>
+            <label for="email" class="mb-1.5 block text-sm font-semibold text-navy">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              autocomplete="email"
+              placeholder="Email"
+              class="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm text-navy outline-none transition focus:border-teal-light focus:ring-2 focus:ring-teal-light/20"
+            />
+          </div>
+          <div>
+            <label for="pesan" class="mb-1.5 block text-sm font-semibold text-navy">Pesan</label>
+            <textarea
+              id="pesan"
+              name="pesan"
+              required
+              rows="4"
+              placeholder="Pesan"
+              class="w-full resize-y rounded-xl border border-slate-200 px-4 py-3 text-sm text-navy outline-none transition focus:border-teal-light focus:ring-2 focus:ring-teal-light/20"
+            ></textarea>
+          </div>
+        </div>
+        <button
+          type="submit"
+          class="mt-6 w-full rounded-xl bg-yellow py-3.5 text-sm font-bold text-navy transition hover:bg-yellow-bright focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow"
+        >
+          Kirim Pesan
+        </button>
+      </form>
+    </div>
+
+    <div>
+      <h2 id="contact-heading" class="text-3xl font-extrabold leading-tight text-navy sm:text-4xl">
+        Jadwalkan <span class="highlight-underline">Konsultasi</span> Dengan Praktisi Kami
+      </h2>
+      <p class="mt-5 text-base leading-relaxed text-body">
+        Ceritakan kebutuhan digital Anda — tim kami siap memberikan rekomendasi strategi, estimasi, dan solusi yang
+        sesuai dengan tujuan bisnis atau instansi Anda.
+      </p>
+
+      <address class="mt-10 space-y-6 not-italic">
+        <div class="flex gap-4">
+          <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-mint-accent" aria-hidden="true">
+            <svg class="h-6 w-6 text-teal-light" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
+              <circle cx="12" cy="9" r="2.5" />
+            </svg>
+          </span>
+          <div>
+            <h3 class="font-bold text-navy">Kantor Kami</h3>
+            <p class="mt-1 text-sm text-body">{site.address}</p>
+          </div>
+        </div>
+        <div class="flex gap-4">
+          <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-mint-accent" aria-hidden="true">
+            <svg class="h-6 w-6 text-teal-light" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path
+                d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                stroke-linejoin="round"
+              />
+              <path d="M22 6l-10 7L2 6" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </span>
+          <div>
+            <h3 class="font-bold text-navy">Email</h3>
+            <p class="mt-1">
+              <a href={`mailto:${site.email}`} class="text-sm text-teal-light hover:underline">{site.email}</a>
+            </p>
+          </div>
+        </div>
+      </address>
+    </div>
+  </div>
+</section>

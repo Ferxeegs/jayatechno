@@ -1,0 +1,82 @@
+---
+const benefits = [
+  'Portofolio luas dengan berbagai sektor bisnis',
+  'Strategi digital berbasis data untuk hasil optimal',
+  'Layanan profesional dengan dukungan berkelanjutan',
+];
+
+const collageImages = [
+  { alt: 'Tim Jayatechno dalam rapat kerja sama bisnis', rotate: '-rotate-6', pos: 'top-4 left-4' },
+  { alt: 'Presentasi strategi digital marketing', rotate: 'rotate-3', pos: 'top-16 right-8' },
+  { alt: 'Kolaborasi tim di ruang kantor modern', rotate: '-rotate-2', pos: 'top-32 left-16' },
+  { alt: 'Diskusi proyek pengembangan software', rotate: 'rotate-6', pos: 'bottom-24 left-8' },
+  { alt: 'Pelatihan digital untuk instansi', rotate: '-rotate-3', pos: 'bottom-16 right-12' },
+  { alt: 'Foto bersama klien setelah proyek sukses', rotate: 'rotate-2', pos: 'bottom-8 left-28' },
+];
+---
+
+<section id="profil" class="bg-white py-16 sm:py-24" aria-labelledby="about-heading">
+  <div class="mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:gap-20 lg:px-8">
+    <div class="relative mx-auto aspect-square w-full max-w-md lg:max-w-none">
+      <div
+        class="absolute inset-4 rounded-[2.5rem] bg-mint-accent/70"
+        aria-hidden="true"
+      ></div>
+      <div class="relative h-full min-h-[360px] w-full">
+        {
+          collageImages.map((img, i) => (
+            <div
+              class:list={[
+                'absolute h-24 w-28 overflow-hidden rounded-xl border-4 border-white shadow-lg sm:h-28 sm:w-32',
+                img.pos,
+                img.rotate,
+              ]}
+              style={`z-index: ${i + 1}`}
+            >
+              <div
+                class="h-full w-full bg-gradient-to-br from-teal-light/40 via-mint-accent to-teal/30"
+                role="img"
+                aria-label={img.alt}
+              ></div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <div>
+      <h2 id="about-heading" class="text-3xl font-extrabold leading-tight text-navy sm:text-4xl">
+        Ratusan Client <span class="highlight-underline">Sukses Terhandle</span>
+      </h2>
+      <p class="mt-5 text-base leading-relaxed text-body">
+        Dengan pengalaman lebih dari 7 tahun di industri kreatif dan digital marketing, kami telah bekerjasama dengan
+        banyak client dari kalangan perusahaan, instansi, hingga UMKM.
+      </p>
+      <ul class="mt-8 space-y-4" role="list">
+        {
+          benefits.map((item) => (
+            <li class="flex items-start gap-3">
+              <span class="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-mint-accent" aria-hidden="true">
+                <svg class="h-4 w-4 text-teal-light" viewBox="0 0 20 20" fill="currentColor">
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </span>
+              <span class="text-sm font-medium text-navy/90 sm:text-base">{item}</span>
+            </li>
+          ))
+        }
+      </ul>
+      <a
+        href="#profil"
+        class="mt-10 inline-flex items-center gap-2 rounded-full bg-yellow px-8 py-3.5 text-sm font-bold text-navy shadow-md transition hover:bg-yellow-bright focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow"
+      >
+        Profil Kami
+        <span aria-hidden="true">→</span>
+      </a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,89 @@
+---
+import { site } from '../data/site';
+---
+
+<section
+  id="beranda"
+  class="relative overflow-hidden bg-mint pb-16 pt-8 sm:pb-24 sm:pt-12"
+  aria-labelledby="hero-heading"
+>
+  <div
+    class="pointer-events-none absolute -bottom-24 -left-32 h-[420px] w-[900px] rounded-[50%] bg-white"
+    aria-hidden="true"
+  ></div>
+
+  <div class="relative mx-auto grid max-w-7xl items-center gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:px-8">
+    <div class="max-w-xl">
+      <h1 id="hero-heading" class="text-balance text-3xl font-extrabold leading-tight text-teal sm:text-4xl lg:text-5xl">
+        {site.tagline}
+      </h1>
+      <p class="mt-5 text-base leading-relaxed text-teal/80 sm:text-lg">
+        Dapatkan layanan unggulan di bidang digital marketing dan pengembangan software, dikerjakan oleh tim
+        profesional berpengalaman.
+      </p>
+      <div class="mt-8 flex flex-wrap items-center gap-4">
+        <a
+          href="#kontak"
+          class="inline-flex items-center justify-center rounded-full bg-teal px-8 py-3.5 text-sm font-semibold text-white shadow-md shadow-teal/20 transition hover:bg-teal/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal"
+        >
+          Konsultasi
+        </a>
+        <button
+          type="button"
+          class="group flex h-14 w-14 items-center justify-center rounded-full bg-yellow shadow-md transition hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow"
+          aria-label="Putar video profil perusahaan"
+        >
+          <svg class="ml-1 h-5 w-5 text-teal" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M8 5v14l11-7z" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="relative mx-auto w-full max-w-lg lg:max-w-none">
+      <div
+        class="absolute -right-2 top-8 flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-md"
+        aria-hidden="true"
+      >
+        <svg class="h-6 w-6 text-teal-light" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 17l6-6 4 4 8-10" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </div>
+
+      <svg
+        viewBox="0 0 400 420"
+        class="mx-auto w-full max-w-md drop-shadow-xl lg:max-w-lg"
+        role="img"
+        aria-label="Maskot Jayatechno — robot digital partner"
+      >
+        <ellipse cx="200" cy="400" rx="160" ry="18" fill="#0D3B4C" opacity="0.08" />
+        <rect x="130" y="200" width="140" height="130" rx="24" fill="#fff" stroke="#D1EAE3" stroke-width="3" />
+        <text x="200" y="275" text-anchor="middle" font-size="22" font-weight="700" fill="#0D3B4C" font-family="sans-serif">
+          jayatechno
+        </text>
+        <rect x="155" y="80" width="90" height="70" rx="16" fill="#4A9084" />
+        <rect x="165" y="90" width="70" height="50" rx="8" fill="#0D3B4C" />
+        <circle cx="185" cy="115" r="6" fill="#F9E05E" />
+        <path d="M205 118 Q220 125 230 115" stroke="#F9E05E" stroke-width="3" fill="none" stroke-linecap="round" />
+        <rect x="120" y="145" width="30" height="60" rx="12" fill="#4A9084" />
+        <rect x="250" y="145" width="30" height="60" rx="12" fill="#4A9084" />
+        <path d="M100 175 L130 200 L115 230 Z" fill="#EF4444" opacity="0.9" />
+        <rect x="270" y="220" width="70" height="45" rx="6" fill="#94A3B8" />
+        <rect x="275" y="225" width="60" height="32" rx="3" fill="#E2E8F0" />
+      </svg>
+
+      <div
+        class="absolute bottom-12 left-0 flex items-center gap-2 rounded-full bg-white px-4 py-2.5 shadow-lg sm:left-8"
+      >
+        <span class="flex h-9 w-9 items-center justify-center rounded-full bg-yellow/30" aria-hidden="true">
+          <svg class="h-5 w-5 text-teal" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-1 15l-4-4 1.41-1.41L11 13.17l6.59-6.59L19 8l-8 8z"
+            />
+          </svg>
+        </span>
+        <span class="text-sm font-semibold text-teal">7 Tahun + Berpengalaman</span>
+      </div>
+    </div>
+  </div>
+</section>
