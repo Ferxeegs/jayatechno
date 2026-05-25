@@ -16,24 +16,24 @@ export const site = {
 } as const;
 
 export const navLinks = [
-  { href: '#beranda', label: 'Home' },
-  { href: '#profil', label: 'Profil' },
+  { href: '/', label: 'Home' },
+  { href: '/profil', label: 'Profil' },
   {
     label: 'Jasa Digital',
     children: [
-      { href: '#layanan', label: 'Digital Marketing' },
-      { href: '#layanan', label: 'Software House' },
-      { href: '#layanan', label: 'Training & Sertifikasi' },
+      { href: '/#layanan', label: 'Digital Marketing' },
+      { href: '/#layanan', label: 'Software House' },
+      { href: '/#layanan', label: 'Training & Sertifikasi' },
     ],
   },
   {
     label: 'Produk Digital',
     children: [
-      { href: '#layanan', label: 'SEO' },
-      { href: '#layanan', label: 'Web & Apps' },
+      { href: '/#layanan', label: 'SEO' },
+      { href: '/#layanan', label: 'Web & Apps' },
     ],
   },
-  { href: '#portfolio', label: 'Portfolio' },
-  { href: '#kerjasama', label: 'Blog' },
-  { href: '#kontak', label: 'Hubungi Kami' },
+  { href: '/#portfolio', label: 'Portfolio' },
+  { href: '/#kerjasama', label: 'Blog' },
+  { href: '/#kontak', label: 'Hubungi Kami' },
 ] as const;

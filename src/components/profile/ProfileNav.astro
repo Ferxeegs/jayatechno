@@ -1,0 +1,32 @@
+---
+const links = [
+  { href: '#overview-heading', label: 'Tentang' },
+  { href: '#visi-misi', label: 'Visi & Misi' },
+  { href: '#timeline-heading', label: 'Perjalanan' },
+  { href: '#business-heading', label: 'Unit Bisnis' },
+  { href: '#team-heading', label: 'Tim' },
+  { href: '#strengths-heading', label: 'Keunggulan' },
+];
+---
+
+<nav
+  class="sticky top-[65px] z-30 border-b border-mint-accent bg-white/95 backdrop-blur-md"
+  aria-label="Navigasi halaman profil"
+>
+  <div class="mx-auto max-w-7xl overflow-x-auto px-4 sm:px-6 lg:px-8">
+    <ul class="flex gap-1 py-3">
+      {
+        links.map((link) => (
+          <li class="shrink-0">
+            <a
+              href={link.href}
+              class="whitespace-nowrap rounded-lg px-4 py-2 text-sm font-medium text-teal/80 transition hover:bg-mint hover:text-teal"
+            >
+              {link.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</nav>

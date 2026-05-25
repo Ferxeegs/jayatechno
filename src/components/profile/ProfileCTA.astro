@@ -1,0 +1,29 @@
+---
+import { site } from '../../data/site';
+---
+
+<section class="relative overflow-hidden bg-gradient-to-r from-mint via-white to-mint py-16 sm:py-20" aria-labelledby="profile-cta-heading">
+  <div class="mx-auto max-w-4xl px-4 text-center sm:px-6">
+    <h2 id="profile-cta-heading" class="text-3xl font-extrabold text-navy sm:text-4xl">
+      Siap Bermitra dengan <span class="highlight-underline">{site.name}</span>?
+    </h2>
+    <p class="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-body">
+      Diskusikan kebutuhan digital Anda dengan tim kami. Konsultasi awal gratis untuk membantu memetakan solusi
+      terbaik bagi organisasi Anda.
+    </p>
+    <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+      <a
+        href="/#kontak"
+        class="inline-flex items-center rounded-full bg-teal px-8 py-3.5 text-sm font-semibold text-white shadow-lg shadow-teal/20 transition hover:bg-teal/90"
+      >
+        Jadwalkan Konsultasi
+      </a>
+      <a
+        href="/"
+        class="inline-flex items-center gap-2 rounded-full border border-teal/20 px-8 py-3.5 text-sm font-semibold text-teal transition hover:bg-mint"
+      >
+        Kembali ke Beranda <span aria-hidden="true">→</span>
+      </a>
+    </div>
+  </div>
+</section>

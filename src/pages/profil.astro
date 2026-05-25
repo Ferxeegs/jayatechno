@@ -1,0 +1,48 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageLayout from '../layouts/PageLayout.astro';
+import ProfileHero from '../components/profile/ProfileHero.astro';
+import ProfileNav from '../components/profile/ProfileNav.astro';
+import ProfileOverview from '../components/profile/ProfileOverview.astro';
+import ProfileVision from '../components/profile/ProfileVision.astro';
+import ProfileTimeline from '../components/profile/ProfileTimeline.astro';
+import ProfileBusiness from '../components/profile/ProfileBusiness.astro';
+import ProfileTeam from '../components/profile/ProfileTeam.astro';
+import ProfileStrengths from '../components/profile/ProfileStrengths.astro';
+import ProfileCTA from '../components/profile/ProfileCTA.astro';
+import { site } from '../data/site';
+import { profileMeta } from '../data/profile';
+
+const title = `${profileMeta.title} — ${site.name}`;
+const description = profileMeta.description;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'AboutPage',
+  name: title,
+  description,
+  url: `${site.url}/profil`,
+  mainEntity: {
+    '@type': 'Organization',
+    name: site.name,
+    legalName: site.legalName,
+  },
+};
+---
+
+<Layout title={title} description={description}>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  <PageLayout>
+    <main>
+      <ProfileHero />
+      <ProfileNav />
+      <ProfileOverview />
+      <ProfileVision />
+      <ProfileTimeline />
+      <ProfileBusiness />
+      <ProfileTeam />
+      <ProfileStrengths />
+      <ProfileCTA />
+    </main>
+  </PageLayout>
+</Layout>
