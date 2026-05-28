@@ -1,7 +1,7 @@
 ---
-import SectionHeading from '../ui/SectionHeading.astro';
-import { site } from '../../data/site';
-import { companyFacts } from '../../data/profile';
+import SectionHeading from "../ui/SectionHeading.astro";
+import { site } from "../../data/site";
+import { companyFacts } from "../../data/profile";
 ---
 
 <section class="bg-white py-16 sm:py-24" aria-labelledby="overview-heading">
@@ -10,45 +10,69 @@ import { companyFacts } from '../../data/profile';
       <div class="lg:col-span-3" data-reveal-item data-reveal-variant="left">
         <SectionHeading
           id="overview-heading"
-          title="Tentang Jayatechno"
-          highlight="Jayatechno"
-          subtitle="Perjalanan kami dimulai dari keyakinan bahwa setiap organisasi berhak mendapatkan solusi digital yang profesional, terukur, dan berkelanjutan."
+          title="Tentang Jaya Techno"
+          highlight="Jaya Techno"
         />
         <div class="mt-8 space-y-5 text-base leading-relaxed text-body">
           <p>
-            Sejak 2018, <strong class="font-semibold text-navy">{site.name}</strong> telah menjadi mitra
-            strategis bagi puluhan instansi pemerintah, perusahaan swasta, lembaga pendidikan, dan pelaku UMKM
-            dalam mengembangkan kehadiran digital, sistem informasi, dan kapabilitas SDM di bidang teknologi.
+            Jaya Techno berada di bawah naungan CV. Arshaka Jaya Kreasindo yang
+            berfokus pada pengembangan solusi digital modern untuk membantu
+            bisnis, instansi, dan organisasi beradaptasi serta berkembang di era
+            transformasi teknologi. Dengan layanan yang mencakup branding
+            digital, digital marketing, pengembangan website, aplikasi mobile,
+            sistem informasi, hingga teknologi Internet of Things (IoT), Jaya
+            Techno hadir sebagai partner strategis dalam menciptakan sistem
+            kerja yang lebih efektif, efisien, dan terintegrasi.
           </p>
           <p>
-            Kami menggabungkan keahlian digital marketing, pengembangan perangkat lunak, dan program pelatihan
-            bersertifikasi dalam satu ekosistem layanan terintegrasi. Pendekatan kami berbasis data, agile, dan
-            disesuaikan dengan regulasi serta kebutuhan operasional setiap klien.
+            Melalui pemanfaatan teknologi terkini dan pendekatan berbasis data,
+            Jaya Techno tidak hanya membantu meningkatkan citra dan pemasaran
+            bisnis, tetapi juga mendukung otomatisasi proses operasional,
+            monitoring real-time, serta pengembangan ekosistem digital yang
+            inovatif dan berkelanjutan. Setiap solusi dirancang secara
+            profesional sesuai kebutuhan klien, mulai dari UMKM, startup,
+            lembaga pendidikan, pondok pesantren, perusahaan, hingga instansi
+            pemerintahan.
           </p>
           <p>
-            Berlokasi di {site.address}, tim kami terdiri dari konsultan, developer, designer, dan analis yang
-            siap mendampingi Anda dari perencanaan hingga implementasi dan dukungan purna-jual.
+            Dengan menggabungkan kreativitas, inovasi teknologi, dan strategi
+            digital yang tepat sasaran, Jaya Techno berkomitmen menjadi partner
+            transformasi digital yang modern, profesional, terpercaya, dan siap
+            membantu menciptakan pertumbuhan bisnis yang lebih cepat dan berdaya
+            saing di era digital.
           </p>
         </div>
       </div>
 
       <aside class="lg:col-span-2" data-reveal-item data-reveal-variant="right">
-        <div class="hover-lift rounded-3xl border border-mint-accent bg-mint p-6 sm:p-8">
-          <h3 class="text-sm font-bold uppercase tracking-wide text-teal">Fakta Perusahaan</h3>
+        <div
+          class="hover-lift rounded-3xl border border-mint-accent bg-mint p-6 sm:p-8"
+        >
+          <h3 class="text-sm font-bold uppercase tracking-wide text-teal">
+            Fakta Perusahaan
+          </h3>
           <dl class="mt-6 space-y-5">
             {
               companyFacts.map((fact) => (
                 <div class="border-b border-mint-accent/80 pb-5 last:border-0 last:pb-0">
-                  <dt class="text-xs font-semibold uppercase tracking-wide text-body">{fact.label}</dt>
+                  <dt class="text-xs font-semibold uppercase tracking-wide text-body">
+                    {fact.label}
+                  </dt>
                   <dd class="mt-1 text-lg font-bold text-navy">{fact.value}</dd>
                 </div>
               ))
             }
           </dl>
           <div class="mt-8 rounded-2xl bg-white p-5 shadow-sm">
-            <p class="text-xs font-semibold uppercase tracking-wide text-teal-light">Badan Hukum</p>
+            <p
+              class="text-xs font-semibold uppercase tracking-wide text-teal-light"
+            >
+              Badan Hukum
+            </p>
             <p class="mt-2 font-bold text-navy">{site.legalName}</p>
-            <p class="mt-2 text-sm text-body">NPWP & akta perusahaan tersedia atas permintaan resmi.</p>
+            <p class="mt-2 text-sm text-body">
+              NPWP & akta perusahaan tersedia atas permintaan resmi.
+            </p>
           </div>
         </div>
       </aside>

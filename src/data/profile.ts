@@ -1,46 +1,47 @@
 export const profileMeta = {
   title: 'Profil Perusahaan',
   description:
-    'Kenali Jayatechno — perusahaan digital marketing dan software house berpengalaman 7+ tahun melayani instansi, korporasi, dan UMKM di Indonesia.',
+    'Kenali Jaya Techno — perusahaan digital marketing dan software house berpengalaman 7+ tahun melayani instansi, korporasi, dan UMKM di Indonesia.',
 } as const;
 
 export const companyFacts = [
-  { label: 'Didirikan', value: '2018' },
-  { label: 'Kantor Pusat', value: 'Semarang, Indonesia' },
-  { label: 'Klien Terlayani', value: '200+' },
-  { label: 'Tim Profesional', value: '45+' },
+  { label: 'Didirikan', value: '2021' },
+  { label: 'Kantor Pusat', value: 'Cilacap, Indonesia' },
+  { label: 'Klien Terlayani', value: '50+' },
+  { label: 'Tim Profesional', value: '10+' },
 ] as const;
 
 export const visionMission = {
   vision:
-    'Menjadi mitra transformasi digital terdepan yang memberdayakan bisnis dan instansi Indonesia melalui teknologi dan strategi berbasis data.',
+    'Menjadi perusahaan teknologi dan digital terpercaya di Indonesia yang mampu membantu bisnis dan instansi berkembang lebih cepat melalui solusi digital, sistem informasi, dan teknologi IoT yang inovatif dan berkelanjutan.',
   mission:
-    'Menghadirkan solusi digital marketing, pengembangan software, dan pelatihan IT yang terukur, berkelanjutan, dan selaras dengan tujuan organisasi klien.',
+    'Membantu bisnis bertransformasi secara digital melalui solusi website, aplikasi, IoT, digital marketing, dan sistem otomatisasi untuk meningkatkan efisiensi serta mendukung pertumbuhan bisnis klien.',
   values: [
     {
-      title: 'Integritas',
-      description: 'Transparansi dalam setiap proyek, laporan, dan komunikasi dengan klien.',
+      title: 'Growth',
+      description: 'Mendorong pertumbuhan bisnis melalui inovasi dan teknologi digital.',
     },
     {
-      title: 'Inovasi',
-      description: 'Terus mengadopsi metode dan teknologi terkini untuk hasil optimal.',
+      title: 'Collaboration',
+      description: 'Membangun kerja sama yang profesional dan saling berkembang.',
     },
     {
-      title: 'Kolaborasi',
-      description: 'Bekerja sebagai mitra strategis, bukan sekadar vendor layanan.',
+      title: 'Integrity',
+      description: 'Menjunjung tinggi kepercayaan, tanggung jawab, dan profesionalitas.',
     },
     {
-      title: 'Keunggulan',
-      description: 'Standar kualitas tinggi dalam delivery, dukungan, dan kepuasan klien.',
+      title: 'Social Impact',
+      description: 'Menghadirkan solusi digital yang memberi manfaat bagi masyarakat dan UMKM.',
     },
+
   ],
 } as const;
 
 export const milestones = [
-  { year: '2018', title: 'Pendirian Perusahaan', description: 'Jayatechno didirikan sebagai startup digital di Semarang.' },
-  { year: '2019', title: 'Ekspansi Layanan', description: 'Menambah divisi Software House dan pelatihan IT.' },
-  { year: '2021', title: 'Kerjasama Instansi', description: 'Bermitra dengan pemerintah daerah dan kementerian.' },
-  { year: '2023', title: 'Sertifikasi & Skala', description: 'Tim bertumbuh 45+ orang dengan portofolio 150+ proyek.' },
+  { year: '2021', title: 'Pendirian Perusahaan', description: 'Jaya Techno didirikan sebagai startup digital di Semarang.' },
+  { year: '2022', title: 'Ekspansi Layanan', description: 'Menambah divisi Software House dan pelatihan IT.' },
+  { year: '2023', title: 'Kerjasama Instansi', description: 'Bermitra dengan pemerintah daerah dan kementerian.' },
+  { year: '2024', title: 'Sertifikasi & Skala', description: 'Tim bertumbuh 45+ orang dengan portofolio 150+ proyek.' },
   { year: '2025', title: 'Transformasi Digital', description: 'Fokus solusi AI-ready, data analytics, dan enterprise system.' },
 ] as const;
 
@@ -61,23 +62,23 @@ export const businessUnits = [
     icon: 'training',
   },
   {
-    title: 'Konsultasi & Advisory',
-    description: 'Audit digital, roadmap teknologi, dan strategi transformasi organisasi.',
+    title: 'Internet of Things (IoT)',
+    description: 'Pengembangan sistem IoT untuk monitoring, otomasi, dan manajemen data secara real-time.',
     icon: 'consulting',
   },
 ] as const;
 
 export const leadership = [
-  { name: 'Dr. Ahmad Wijaya', role: 'Direktur Utama', focus: 'Strategi & pengembangan bisnis' },
-  { name: 'Siti Rahmawati, S.Kom', role: 'Direktur Operasional', focus: 'Delivery & manajemen proyek' },
-  { name: 'Budi Santoso, M.T.', role: 'Head of Technology', focus: 'Arsitektur software & inovasi' },
-  { name: 'Dewi Lestari, M.M.', role: 'Head of Marketing', focus: 'Brand strategy & growth' },
+  { name: 'Aris Kusnandar, S.Kom., M.Kom.', role: 'Founder', focus: 'Strategi & Pengembangan Bisnis' },
+  { name: 'Imam Syafi\'i, S.Kom., M.Kom.', role: 'Direktur Operasional', focus: 'Manajemen Proyek & Software' },
+  { name: 'Fajar Hari P, S.Kom., M.Kom.', role: 'Direktur Operasional', focus: 'Brand Strategy & Digital Marketing' },
+  { name: 'Fadlil Ferdiansyah, S.T.', role: 'Direktur Operasional', focus: 'Arsitektur Software & Inovasi' },
 ] as const;
 
 export const differentiators = [
   'Tim multidisiplin: strategi, desain, engineering, dan analitik',
   'Metodologi agile dengan milestone dan reporting terjadwal',
-  'Pengalaman 7+ tahun di sektor pemerintahan, pendidikan, dan korporat',
+  'Pengalaman 5+ tahun di sektor pemerintahan, pendidikan, dan korporat',
   'Dukungan purna-jual dan maintenance berkelanjutan',
   'Keamanan data dan kepatuhan standar industri',
 ] as const;
@@ -90,8 +91,8 @@ export const certifications = [
 ] as const;
 
 export const stats = [
-  { value: '7+', label: 'Tahun Pengalaman' },
-  { value: '200+', label: 'Klien & Proyek' },
-  { value: '45+', label: 'Tenaga Ahli' },
-  { value: '98%', label: 'Kepuasan Klien' },
+  { value: '5+', label: 'Tahun Pengalaman' },
+  { value: '50+', label: 'Klien & Proyek' },
+  { value: '10+', label: 'Tenaga Ahli' },
+  { value: '99%', label: 'Kepuasan Klien' },
 ] as const;

@@ -1,28 +1,28 @@
 ---
-import { site } from '../data/site';
+import { site } from "../data/site";
 
 interface Props {
   class?: string;
-  /** horizontal = header (memanjang), footer = stacked (jayatechno2) */
-  variant?: 'horizontal' | 'footer';
+  /** horizontal = header (memanjang), footer = stacked (Jaya Techno2) */
+  variant?: "horizontal" | "footer";
 }
 
-const { class: className = '', variant = 'horizontal' } = Astro.props;
+const { class: className = "", variant = "horizontal" } = Astro.props;
 
 const logos = {
   horizontal: {
-    src: '/images/jayatechno.png',
+    src: "/images/jayatechno.png",
     width: 577,
     height: 105,
     class:
-      'h-8 w-auto max-w-[min(11rem,46vw)] object-contain object-left sm:h-9 sm:max-w-[13rem] lg:h-10',
-    fetchPriority: 'high' as const,
+      "h-8 w-auto max-w-[min(11rem,46vw)] object-contain object-left sm:h-9 sm:max-w-[13rem] lg:h-10",
+    fetchPriority: "high" as const,
   },
   footer: {
-    src: '/images/jayatechno2.png',
+    src: "/images/jayatechno2.png",
     width: 403,
     height: 296,
-    class: 'h-auto w-[7.25rem] max-w-full object-contain object-left sm:w-32',
+    class: "h-auto w-[7.25rem] max-w-full object-contain object-left sm:w-32",
     fetchPriority: undefined,
   },
 };
@@ -32,7 +32,7 @@ const logo = logos[variant];
 
 <a
   href="/"
-  class:list={['inline-flex shrink-0 items-center no-underline', className]}
+  class:list={["inline-flex shrink-0 items-center no-underline", className]}
   aria-label={`${site.name} — kembali ke beranda`}
 >
   <img

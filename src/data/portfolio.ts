@@ -1,7 +1,7 @@
 export const portfolioMeta = {
   title: 'Portfolio',
   description:
-    'Kumpulan proyek digital marketing, pengembangan website & aplikasi, serta solusi teknologi Jayatechno untuk instansi, korporasi, dan UMKM.',
+    'Kumpulan proyek digital marketing, pengembangan website & aplikasi, serta solusi teknologi Jaya Techno untuk instansi, korporasi, dan UMKM.',
 } as const;
 
 export const categories = [

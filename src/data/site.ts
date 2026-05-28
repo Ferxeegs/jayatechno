@@ -1,17 +1,17 @@
 export const site = {
-  name: 'Jayatechno',
-  legalName: 'PT Jaya Techno Digital',
-  tagline: 'Partner Digital Untuk Bisnis & Instansi',
+  name: 'Jaya Techno',
+  legalName: 'CV. Arshaka Jaya Kreasindo',
+  tagline: 'Digital and IoT Solution Parter',
   description:
-    'Layanan digital marketing, pengembangan software, dan training IT profesional untuk bisnis dan instansi di Indonesia.',
-  url: 'https://jayatechno.co.id',
-  email: 'info@jayatechno.co.id',
-  phones: ['0812-3456-7890', '0813-9876-5432'],
-  address: 'Gedung KWU UNNES Lantai 3, Gunungpati, Kota Semarang',
-  whatsapp: '6281234567890',
+    'Layanan digital marketing, pengembangan software, IoT dan training IT profesional untuk bisnis dan instansi di Indonesia.',
+  url: 'https://jayatechno.net',
+  email: 'jayatechno.id@gmail.com',
+  phones: ['085155320108', '08985531390'],
+  address: 'Jl. Nusadadi, RT.02/RW.02, Penyingkiran, Rejodadi, Kec. Cimanggu, Kabupaten Cilacap, Jawa Tengah 53256',
+  whatsapp: '6285155320108',
   social: {
-    facebook: 'https://facebook.com/jayatechno',
-    instagram: 'https://instagram.com/jayatechno',
+    facebook: 'https://www.facebook.com/share/1WpWCRVuoY/?mibextid=wwXIfr',
+    instagram: 'https://instagram.com/jayatechno.id',
   },
 } as const;
 
