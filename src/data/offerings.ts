@@ -64,9 +64,9 @@ export const offerings: Offering[] = [
       subtitle:
         'Kami membantu brand tumbuh melalui strategi berbasis data—dari visibilitas organik hingga kampanye berbayar yang efisien.',
       stats: [
-        { value: '50+', label: 'Klien Terlayani' },
-        { value: '3–5x', label: 'ROI Kampanye Rata-rata' },
-        { value: '7+', label: 'Tahun Pengalaman' },
+        { value: '20+', label: 'Klien Terlayani' },
+        { value: '2x', label: 'ROI Kampanye Rata-rata' },
+        { value: '5+', label: 'Tahun Pengalaman' },
       ],
     },
     overview: {
@@ -174,7 +174,7 @@ export const offerings: Offering[] = [
       subtitle:
         'Dari website perusahaan hingga sistem internal—dibangun dengan arsitektur rapi, keamanan terjaga, dan dokumentasi lengkap.',
       stats: [
-        { value: '150+', label: 'Proyek Delivered' },
+        { value: '15+', label: 'Proyek Delivered' },
         { value: 'Agile', label: 'Metodologi Kerja' },
         { value: '12 bln', label: 'Garansi Maintenance*' },
       ],
