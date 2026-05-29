@@ -1,0 +1,63 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageLayout from '../../layouts/PageLayout.astro';
+import OfferingHero from '../../components/offerings/OfferingHero.astro';
+import OfferingOverview from '../../components/offerings/OfferingOverview.astro';
+import OfferingDeliverables from '../../components/offerings/OfferingDeliverables.astro';
+import OfferingPricing from '../../components/offerings/OfferingPricing.astro';
+import OfferingProcess from '../../components/offerings/OfferingProcess.astro';
+import OfferingFAQ from '../../components/offerings/OfferingFAQ.astro';
+import OfferingCTA from '../../components/offerings/OfferingCTA.astro';
+import { site } from '../../data/site';
+import { getProdukOfferings, getOfferingBySlug } from '../../data/offerings';
+
+export function getStaticPaths() {
+  return getProdukOfferings().map((offering) => ({
+    params: { slug: offering.slug },
+  }));
+}
+
+const { slug } = Astro.params;
+const offering = getOfferingBySlug(slug!);
+
+if (!offering || offering.type !== 'produk') {
+  return Astro.redirect('/');
+}
+
+const title = `${offering.meta.title} — ${site.name}`;
+const description = offering.meta.description;
+const pageUrl = `${site.url}/produk/${offering.slug}`;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: offering.meta.title,
+  description: offering.meta.description,
+  url: pageUrl,
+  brand: {
+    '@type': 'Organization',
+    name: site.name,
+  },
+  offers: offering.pricing.map((tier) => ({
+    '@type': 'Offer',
+    name: tier.name,
+    description: tier.tagline,
+    price: tier.price,
+  })),
+};
+---
+
+<Layout title={title} description={description}>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  <PageLayout>
+    <main>
+      <OfferingHero offering={offering} />
+      <OfferingOverview offering={offering} />
+      <OfferingDeliverables offering={offering} />
+      <OfferingPricing offering={offering} />
+      <OfferingProcess offering={offering} />
+      <OfferingFAQ offering={offering} />
+      <OfferingCTA offering={offering} />
+    </main>
+  </PageLayout>
+</Layout>

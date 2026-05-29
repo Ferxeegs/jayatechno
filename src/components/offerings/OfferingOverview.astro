@@ -1,0 +1,50 @@
+---
+import SectionHeading from '../ui/SectionHeading.astro';
+import type { Offering } from '../../data/offerings';
+
+interface Props {
+  offering: Offering;
+}
+
+const { offering } = Astro.props;
+---
+
+<section class="bg-white py-16 sm:py-24" aria-labelledby="offering-overview-heading">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="grid gap-12 lg:grid-cols-2 lg:gap-16 lg:items-start" data-reveal-stagger>
+      <div data-reveal-item data-reveal-variant="left">
+        <SectionHeading
+          id="offering-overview-heading"
+          title="Mengapa Memilih Layanan Ini?"
+          highlight="Layanan"
+          reveal
+        />
+        <div class="mt-8 space-y-5 text-base leading-relaxed text-body">
+          {offering.overview.paragraphs.map((p) => (
+            <p>{p}</p>
+          ))}
+        </div>
+      </div>
+
+      <ul class="space-y-4" data-reveal-item data-reveal-variant="right" role="list">
+        {offering.overview.benefits.map((benefit) => (
+          <li class="flex gap-4 rounded-2xl border border-mint-accent/60 bg-mint/40 p-5">
+            <span
+              class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-teal text-yellow"
+              aria-hidden="true"
+            >
+              <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path
+                  fill-rule="evenodd"
+                  d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </span>
+            <span class="text-sm font-semibold leading-relaxed text-navy sm:text-base">{benefit}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>

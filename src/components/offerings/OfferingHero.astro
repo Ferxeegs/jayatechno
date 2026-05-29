@@ -1,0 +1,228 @@
+---
+import Breadcrumb from '../ui/Breadcrumb.astro';
+import type { Offering } from '../../data/offerings';
+
+interface Props {
+  offering: Offering;
+}
+
+const { offering } = Astro.props;
+const parentLabel = offering.type === 'jasa' ? 'Jasa Digital' : 'Produk Digital';
+
+const quickLinks = [
+  { href: '#harga', label: 'Paket & Harga', icon: 'price' },
+  { href: '#offering-deliverables-heading', label: 'Yang Anda Dapat', icon: 'check' },
+  { href: '#offering-faq-heading', label: 'Pertanyaan Umum', icon: 'faq' },
+];
+---
+
+<section
+  class="offering-hero relative overflow-hidden bg-gradient-to-br from-navy via-teal to-[#1a4a7a] text-white"
+  aria-labelledby="offering-hero-heading"
+>
+  <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+    <div
+      class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:48px_48px] [mask-image:radial-gradient(ellipse_80%_70%_at_50%_0%,#000_50%,transparent_100%)]"
+    >
+    </div>
+    <div class="page-hero-glow absolute -right-20 top-0 h-[520px] w-[520px] rounded-full bg-yellow/15 blur-3xl"></div>
+    <div class="page-hero-glow-delay absolute -bottom-32 -left-20 h-96 w-96 rounded-full bg-teal-light/25 blur-3xl"></div>
+  </div>
+
+  <div class="relative mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
+    <div data-reveal-hero>
+      <Breadcrumb
+        light
+        items={[
+          { label: 'Beranda', href: '/' },
+          { label: parentLabel },
+          { label: offering.navLabel },
+        ]}
+      />
+    </div>
+
+    <div class="mt-8 grid gap-10 lg:grid-cols-12 lg:items-center lg:gap-12">
+      <div class="lg:col-span-7">
+        <div data-reveal-hero class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-white/90 backdrop-blur-md">
+          <span class="h-1.5 w-1.5 rounded-full bg-yellow shadow-[0_0_8px_rgba(241,90,36,0.8)]" aria-hidden="true"></span>
+          {offering.hero.eyebrow}
+        </div>
+
+        <h1
+          data-reveal-hero
+          id="offering-hero-heading"
+          class="mt-5 text-balance text-4xl font-extrabold leading-[1.1] tracking-tight sm:text-5xl lg:text-[3.25rem]"
+        >
+          {offering.hero.title}
+          <span class="mt-1 block text-yellow sm:mt-0 sm:inline">
+            <span class="highlight-underline decoration-yellow/90">{offering.hero.highlight}</span>
+          </span>
+        </h1>
+
+        <p data-reveal-hero class="mt-6 max-w-xl text-base leading-relaxed text-white/80 sm:text-lg">
+          {offering.hero.subtitle}
+        </p>
+
+        <div data-reveal-hero class="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+          <a
+            href="/#kontak"
+            class="group inline-flex items-center justify-center gap-2 rounded-full bg-yellow px-7 py-3.5 text-sm font-bold text-navy shadow-lg shadow-yellow/20 transition hover:bg-yellow-bright hover:shadow-yellow/30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow"
+          >
+            Konsultasi Gratis
+            <svg class="h-4 w-4 transition group-hover:translate-x-0.5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd" />
+            </svg>
+          </a>
+          <a
+            href="#harga"
+            class="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 bg-white/10 px-7 py-3.5 text-sm font-semibold text-white backdrop-blur-md transition hover:border-white/40 hover:bg-white/15 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+          >
+            <svg class="h-4 w-4 text-yellow" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path d="M10.75 10.818v2.614A3.13 3.13 0 0111.888 13c.482-.315.612-.648.612-.975 0-.327-.13-.66-.612-.975v-2.23zm-1.5 0v2.23c-.482.315-.612.648-.612.975 0 .327.13.66.612.975A3.13 3.13 0 018.112 13c.482-.315.612-.648.612-.975 0-.327-.13-.66-.612-.975v-2.23z" />
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12.25A2.25 2.25 0 008.75 3.5h-1.5A2.25 2.25 0 005 5.75v8.5A2.25 2.25 0 007.25 16.5h1.5a2.25 2.25 0 002.25-2.25v-1.5a.75.75 0 011.5 0v1.5A3.75 3.75 0 017.25 18h-1.5A3.75 3.75 0 012 14.25v-8.5A3.75 3.75 0 015.75 2h1.5A3.75 3.75 0 0111 5.75v1.5a.75.75 0 01-1.5 0v-1.5z" clip-rule="evenodd" />
+            </svg>
+            Lihat Paket Harga
+          </a>
+        </div>
+
+        <p data-reveal-hero class="mt-5 flex items-center gap-2 text-xs text-white/55 sm:text-sm">
+          <svg class="h-4 w-4 shrink-0 text-teal-light" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" />
+          </svg>
+          Konsultasi awal gratis · Tanpa komitmen
+        </p>
+
+        {
+          offering.hero.stats && (
+            <dl class="mt-10 grid grid-cols-3 gap-3 lg:hidden" data-reveal-stagger>
+              {offering.hero.stats.map((stat) => (
+                <div
+                  data-reveal-item
+                  class="rounded-xl border border-white/10 bg-white/5 px-3 py-4 text-center backdrop-blur-sm"
+                >
+                  <dt class="text-xl font-extrabold text-yellow">{stat.value}</dt>
+                  <dd class="mt-0.5 text-[10px] font-medium leading-tight text-white/70">{stat.label}</dd>
+                </div>
+              ))}
+            </dl>
+          )
+        }
+      </div>
+
+      <div class="lg:col-span-5" data-reveal-hero>
+        <div class="relative mx-auto max-w-md lg:max-w-none">
+          <div
+            class="absolute -inset-1 rounded-[2rem] bg-gradient-to-br from-yellow/30 via-transparent to-teal-light/20 blur-sm"
+            aria-hidden="true"
+          >
+          </div>
+
+          <aside
+            class="relative overflow-hidden rounded-[1.75rem] border border-white/15 bg-white/10 p-6 shadow-2xl backdrop-blur-xl sm:p-7"
+            aria-label="Ringkasan layanan"
+          >
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <p class="text-xs font-semibold uppercase tracking-wider text-white/50">Layanan</p>
+                <p class="mt-1 text-xl font-bold text-white">{offering.navLabel}</p>
+              </div>
+              <span
+                class="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-yellow/15 text-yellow ring-1 ring-yellow/30"
+                aria-hidden="true"
+              >
+                {
+                  offering.type === 'jasa' ? (
+                    <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                      <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  ) : (
+                    <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                      <rect x="2" y="3" width="20" height="14" rx="2" />
+                      <path d="M8 21h8M12 17v4" stroke-linecap="round" />
+                    </svg>
+                  )
+                }
+              </span>
+            </div>
+
+            {
+              offering.hero.stats && (
+                <dl class="mt-6 hidden gap-3 border-t border-white/10 pt-6 lg:grid lg:grid-cols-3">
+                  {offering.hero.stats.map((stat) => (
+                    <div class="text-center">
+                      <dt class="text-2xl font-extrabold text-yellow">{stat.value}</dt>
+                      <dd class="mt-1 text-[11px] font-medium leading-tight text-white/65">{stat.label}</dd>
+                    </div>
+                  ))}
+                </dl>
+              )
+            }
+
+            <nav class="mt-6 space-y-2" aria-label="Navigasi cepat halaman">
+              <p class="text-xs font-semibold uppercase tracking-wider text-white/45">Navigasi cepat</p>
+              <ul class="space-y-1.5" role="list">
+                {
+                  quickLinks.map((link) => (
+                    <li>
+                      <a
+                        href={link.href}
+                        class="group flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-white/85 transition hover:bg-white/10 hover:text-white"
+                      >
+                        <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-white/10 text-yellow transition group-hover:bg-yellow/20">
+                          {link.icon === 'price' && (
+                            <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                              <path d="M10.75 10.818v2.614A3.13 3.13 0 0111.888 13c.482-.315.612-.648.612-.975 0-.327-.13-.66-.612-.975v-2.23z" />
+                            </svg>
+                          )}
+                          {link.icon === 'check' && (
+                            <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                              <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
+                            </svg>
+                          )}
+                          {link.icon === 'faq' && (
+                            <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                              <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a.75.75 0 000 1.5h.253a.25.25 0 01.244.194l-.459 2.066A1.75 1.75 0 0010.747 15H11a.75.75 0 000-1.5h-.253a.25.25 0 01-.244-.194l.459-2.066A1.75 1.75 0 009.253 9H9z" clip-rule="evenodd" />
+                            </svg>
+                          )}
+                        </span>
+                        <span class="flex-1">{link.label}</span>
+                        <svg class="h-4 w-4 shrink-0 text-white/40 transition group-hover:translate-x-0.5 group-hover:text-white/70" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                          <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
+                        </svg>
+                      </a>
+                    </li>
+                  ))
+                }
+              </ul>
+            </nav>
+          </aside>
+        </div>
+      </div>
+    </div>
+
+    <a
+      href="#harga"
+      class="offering-hero-scroll mt-10 flex flex-col items-center gap-1 text-white/40 transition hover:text-white/70 lg:mt-12"
+      aria-label="Scroll ke paket harga"
+    >
+      <span class="text-[10px] font-semibold uppercase tracking-widest">Scroll</span>
+      <svg class="h-5 w-5 animate-bounce" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+        <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.94a.75.75 0 111.08 1.04l-4.24 4.5a.75.75 0 01-1.08 0l-4.24-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+      </svg>
+    </a>
+  </div>
+</section>
+
+<style>
+  .offering-hero .highlight-underline {
+    background-image: linear-gradient(rgba(241, 90, 36, 0.55), rgba(241, 90, 36, 0.55));
+    background-size: 100% 0.32em;
+    background-position: 0 92%;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .offering-hero-scroll svg {
+      animation: none;
+    }
+  }
+</style>

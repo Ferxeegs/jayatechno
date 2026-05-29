@@ -1,5 +1,11 @@
 ---
 import { site } from '../data/site';
+import { contactForm, getWeb3FormsAccessKey } from '../data/contact';
+
+const accessKey = getWeb3FormsAccessKey();
+const formConfigured = accessKey.length > 0;
+const inputClass =
+  'w-full rounded-xl border border-slate-100 bg-white/90 px-4 py-3.5 text-sm text-navy outline-none transition duration-300 focus:border-teal-light focus:ring-4 focus:ring-teal-light/10 shadow-sm disabled:cursor-not-allowed disabled:opacity-60';
 ---
 
 <section
@@ -7,72 +13,132 @@ import { site } from '../data/site';
   class="relative overflow-hidden bg-gradient-to-b from-white via-mint/30 to-white py-14 sm:py-28"
   aria-labelledby="contact-heading"
 >
-  <!-- Decorative Background Shapes -->
   <div
     class="pointer-events-none absolute -right-32 top-0 h-96 w-96 rounded-full bg-teal-light/10 blur-3xl"
     aria-hidden="true"
-  ></div>
+  >
+  </div>
   <div
     class="pointer-events-none absolute -left-32 bottom-0 h-96 w-96 rounded-full bg-mint-accent/20 blur-3xl"
     aria-hidden="true"
-  ></div>
+  >
+  </div>
 
-  <div class="relative mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:gap-20 lg:px-8 z-10">
-    <!-- Left Column: Glassmorphic Form Card -->
-    <div class="contact-left-wrapper rounded-[2.5rem] bg-gradient-to-br from-mint-accent/40 to-teal-light/25 p-3 shadow-xl sm:p-4" data-reveal>
+  <div class="relative z-10 mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:gap-20 lg:px-8">
+    <div
+      class="contact-left-wrapper rounded-[2.5rem] bg-gradient-to-br from-mint-accent/40 to-teal-light/25 p-3 shadow-xl sm:p-4"
+      data-reveal
+    >
+      {
+        import.meta.env.DEV && !formConfigured && (
+          <p
+            class="mb-3 rounded-xl border border-yellow/40 bg-yellow/10 px-4 py-3 text-xs font-semibold text-navy"
+            role="note"
+          >
+            Form Web3Forms belum aktif. Salin <code class="rounded bg-white/80 px-1">.env.example</code>{' '}
+            ke <code class="rounded bg-white/80 px-1">.env</code> dan isi{' '}
+            <code class="rounded bg-white/80 px-1">PUBLIC_WEB3FORMS_ACCESS_KEY</code>.
+          </p>
+        )
+      }
+
       <form
-        class="rounded-[2rem] border border-white bg-white/80 p-6 sm:p-10 shadow-inner backdrop-blur-md text-left"
+        id="contact-form"
+        class="rounded-[2rem] border border-white bg-white/80 p-6 text-left shadow-inner backdrop-blur-md sm:p-10"
         method="post"
-        action="#"
+        action={contactForm.endpoint}
+        data-endpoint={contactForm.endpoint}
+        data-access-key={accessKey}
+        data-subject={contactForm.subject}
+        data-from-name={contactForm.fromName}
         aria-label="Formulir konsultasi"
+        novalidate={!formConfigured}
       >
+        <input type="checkbox" name="botcheck" class="hidden" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
         <div class="space-y-6">
           <div>
-            <label for="nama" class="mb-2 block text-sm font-bold text-navy">Nama Lengkap</label>
+            <label for="contact-name" class="mb-2 block text-sm font-bold text-navy">
+              Nama Lengkap <span class="text-yellow" aria-hidden="true">*</span>
+            </label>
             <input
               type="text"
-              id="nama"
-              name="nama"
+              id="contact-name"
+              name="name"
               required
+              minlength="2"
+              maxlength="120"
               autocomplete="name"
               placeholder="Masukkan nama Anda"
-              class="w-full rounded-xl border border-slate-100 bg-white/90 px-4 py-3.5 text-sm text-navy outline-none transition duration-300 focus:border-teal-light focus:ring-4 focus:ring-teal-light/10 shadow-sm"
+              class={inputClass}
+              disabled={!formConfigured}
             />
           </div>
+
           <div>
-            <label for="email" class="mb-2 block text-sm font-bold text-navy">Alamat Email</label>
+            <label for="contact-email" class="mb-2 block text-sm font-bold text-navy">
+              Alamat Email <span class="text-yellow" aria-hidden="true">*</span>
+            </label>
             <input
               type="email"
-              id="email"
+              id="contact-email"
               name="email"
               required
               autocomplete="email"
-              placeholder="Masukkan email Anda"
-              class="w-full rounded-xl border border-slate-100 bg-white/90 px-4 py-3.5 text-sm text-navy outline-none transition duration-300 focus:border-teal-light focus:ring-4 focus:ring-teal-light/10 shadow-sm"
+              inputmode="email"
+              placeholder="nama@perusahaan.com"
+              class={inputClass}
+              disabled={!formConfigured}
             />
           </div>
+
           <div>
-            <label for="pesan" class="mb-2 block text-sm font-bold text-navy">Deskripsi Kebutuhan</label>
+            <label for="contact-message" class="mb-2 block text-sm font-bold text-navy">
+              Deskripsi Kebutuhan <span class="text-yellow" aria-hidden="true">*</span>
+            </label>
             <textarea
-              id="pesan"
-              name="pesan"
+              id="contact-message"
+              name="message"
               required
+              minlength="10"
+              maxlength="2000"
               rows="4"
               placeholder="Ceritakan proyek atau kebutuhan digital Anda..."
-              class="w-full resize-y rounded-xl border border-slate-100 bg-white/90 px-4 py-3.5 text-sm text-navy outline-none transition duration-300 focus:border-teal-light focus:ring-4 focus:ring-teal-light/10 shadow-sm"
-            ></textarea>
+              class={`${inputClass} resize-y min-h-[7rem]`}
+              disabled={!formConfigured}
+            />
           </div>
         </div>
+
+        <p class="mt-6 text-xs leading-relaxed text-body">
+          Dengan mengirim formulir ini, Anda setuju dihubungi oleh tim {site.name} terkait permintaan
+          konsultasi Anda. Data tidak dibagikan ke pihak ketiga.
+        </p>
+
+        <div
+          id="contact-form-status"
+          class="hidden mt-4 rounded-xl border border-mint-accent/60 bg-mint/50 px-4 py-3 text-sm font-semibold outline-none"
+          role="status"
+          aria-live="polite"
+          tabindex="-1"
+        >
+        </div>
+
         <button
           type="submit"
-          class="mt-8 w-full cursor-pointer rounded-xl bg-yellow py-4 text-sm font-extrabold text-navy transition duration-300 hover:bg-yellow-bright focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow"
+          id="contact-form-submit"
+          data-label-default="Kirim Pesan Sekarang"
+          data-label-loading="Mengirim..."
+          class="mt-6 w-full cursor-pointer rounded-xl bg-yellow py-4 text-sm font-extrabold text-navy transition duration-300 hover:bg-yellow-bright focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow disabled:cursor-not-allowed disabled:opacity-60"
+          disabled={!formConfigured}
+          aria-busy="false"
         >
           Kirim Pesan Sekarang
         </button>
+
       </form>
     </div>
 
-    <!-- Content -->
     <div class="contact-right-wrapper order-1 text-left sm:order-2" data-reveal>
       <span class="mb-3 block text-xs font-bold uppercase tracking-widest text-teal-light">Hubungi Kami</span>
       <h2 id="contact-heading" class="text-2xl font-black leading-tight tracking-tight text-navy sm:text-4xl">
@@ -84,33 +150,46 @@ import { site } from '../data/site';
       </p>
 
       <address class="mt-8 space-y-4 not-italic sm:mt-12 sm:space-y-6">
-        <div class="contact-item group flex gap-4 rounded-xl border border-slate-100 bg-white p-4 shadow-sm transition duration-300 hover:border-mint-accent hover:shadow-md sm:gap-5 sm:rounded-2xl sm:p-5">
-          <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-mint to-mint-accent text-teal-light group-hover:from-teal group-hover:to-navy group-hover:text-yellow transition-all duration-300 shadow-sm" aria-hidden="true">
+        <div
+          class="contact-item group flex gap-4 rounded-xl border border-slate-100 bg-white p-4 shadow-sm transition duration-300 hover:border-mint-accent hover:shadow-md sm:gap-5 sm:rounded-2xl sm:p-5"
+        >
+          <span
+            class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-mint to-mint-accent text-teal-light shadow-sm transition-all duration-300 group-hover:from-teal group-hover:to-navy group-hover:text-yellow"
+            aria-hidden="true"
+          >
             <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
-              <circle cx="12" cy="9" r="2.5" />
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"></path>
+              <circle cx="12" cy="9" r="2.5"></circle>
             </svg>
           </span>
           <div>
-            <h3 class="font-extrabold text-navy tracking-tight">Kantor Kami</h3>
-            <p class="mt-1.5 text-sm text-body leading-relaxed">{site.address}</p>
+            <h3 class="font-extrabold tracking-tight text-navy">Kantor Kami</h3>
+            <p class="mt-1.5 text-sm leading-relaxed text-body">{site.address}</p>
           </div>
         </div>
-        
-        <div class="contact-item group flex gap-4 rounded-xl border border-slate-100 bg-white p-4 shadow-sm transition duration-300 hover:border-mint-accent hover:shadow-md sm:gap-5 sm:rounded-2xl sm:p-5">
-          <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-mint to-mint-accent text-teal-light group-hover:from-teal group-hover:to-navy group-hover:text-yellow transition-all duration-300 shadow-sm" aria-hidden="true">
+
+        <div
+          class="contact-item group flex gap-4 rounded-xl border border-slate-100 bg-white p-4 shadow-sm transition duration-300 hover:border-mint-accent hover:shadow-md sm:gap-5 sm:rounded-2xl sm:p-5"
+        >
+          <span
+            class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-mint to-mint-accent text-teal-light shadow-sm transition-all duration-300 group-hover:from-teal group-hover:to-navy group-hover:text-yellow"
+            aria-hidden="true"
+          >
             <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
               <path
                 d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
-                stroke-linejoin="round"
-              />
-              <path d="M22 6l-10 7L2 6" stroke-linecap="round" stroke-linejoin="round" />
+                stroke-linejoin="round"></path>
+              <path d="M22 6l-10 7L2 6" stroke-linecap="round" stroke-linejoin="round"></path>
             </svg>
           </span>
           <div>
-            <h3 class="font-extrabold text-navy tracking-tight">Surat Elektronik (Email)</h3>
+            <h3 class="font-extrabold tracking-tight text-navy">Surat Elektronik (Email)</h3>
             <p class="mt-1.5">
-              <a href={`mailto:${site.email}`} class="text-sm font-semibold text-teal-light hover:text-teal hover:underline transition-colors">{site.email}</a>
+              <a
+                href={`mailto:${site.email}`}
+                class="text-sm font-semibold text-teal-light transition-colors hover:text-teal hover:underline"
+                >{site.email}</a
+              >
             </p>
           </div>
         </div>
@@ -118,3 +197,7 @@ import { site } from '../data/site';
     </div>
   </div>
 </section>
+
+<script>
+  import '../scripts/contact-form.ts';
+</script>

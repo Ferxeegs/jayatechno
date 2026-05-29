@@ -1,0 +1,138 @@
+---
+import SectionHeading from '../ui/SectionHeading.astro';
+import type { Offering } from '../../data/offerings';
+
+interface Props {
+  offering: Offering;
+}
+
+const { offering } = Astro.props;
+---
+
+<section
+  class="offering-faq relative overflow-hidden bg-gradient-to-b from-mint/40 via-white to-white py-16 sm:py-24"
+  aria-labelledby="offering-faq-heading"
+>
+  <div
+    class="pointer-events-none absolute right-0 top-0 h-72 w-72 rounded-full bg-teal-light/10 blur-3xl"
+    aria-hidden="true"
+  >
+  </div>
+
+  <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="grid gap-12 lg:grid-cols-12 lg:gap-16">
+      <div class="lg:col-span-4 lg:sticky lg:top-28 lg:self-start" data-reveal>
+        <SectionHeading
+          id="offering-faq-heading"
+          title="Pertanyaan Umum"
+          highlight="Umum"
+          subtitle="Jawaban singkat seputar layanan ini. Tidak menemukan yang Anda cari? Tim kami siap membantu."
+        />
+        <div class="mt-8 rounded-2xl border border-mint-accent/60 bg-white p-6 shadow-sm">
+          <p class="text-sm font-bold text-navy">Masih bingung?</p>
+          <p class="mt-2 text-sm leading-relaxed text-body">
+            Hubungi kami untuk diskusi kebutuhan spesifik {offering.navLabel} Anda.
+          </p>
+          <a
+            href="/#kontak"
+            class="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-teal px-5 py-3 text-sm font-bold text-white transition hover:bg-teal/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal"
+          >
+            Tanya Tim Kami
+            <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd" />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="lg:col-span-8">
+        <div class="offering-faq-list space-y-3" data-reveal-stagger role="list">
+          {
+            offering.faqs.map((faq, index) => (
+              <details
+                data-reveal-item
+                data-faq-item
+                class="offering-faq-item group rounded-2xl border border-mint-accent/50 bg-white shadow-sm transition-[border-color,box-shadow] open:border-teal/25 open:shadow-md open:shadow-teal/5"
+              >
+                <summary
+                  class="flex cursor-pointer list-none items-start gap-4 px-5 py-5 sm:px-6 sm:py-5 marker:content-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-light [&::-webkit-details-marker]:hidden"
+                >
+                  <span
+                    class="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-mint text-sm font-bold text-teal transition group-open:bg-teal group-open:text-yellow"
+                    aria-hidden="true"
+                  >
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                  <span class="flex flex-1 items-center justify-between gap-4 pt-0.5">
+                    <span class="text-left text-base font-bold leading-snug text-navy sm:text-[1.05rem]">
+                      {faq.question}
+                    </span>
+                    <span
+                      class="offering-faq-chevron flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-mint text-teal-light transition"
+                      aria-hidden="true"
+                    >
+                      <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.94a.75.75 0 111.08 1.04l-4.24 4.5a.75.75 0 01-1.08 0l-4.24-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+                      </svg>
+                    </span>
+                  </span>
+                </summary>
+                <div class="offering-faq-panel border-t border-mint-accent/40">
+                  <div class="px-5 pb-5 pl-[4.25rem] pr-5 pt-1 sm:px-6 sm:pb-6 sm:pl-[4.75rem]">
+                    <p class="text-sm leading-relaxed text-body sm:text-[0.9375rem]">{faq.answer}</p>
+                  </div>
+                </div>
+              </details>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .offering-faq-panel {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .offering-faq-panel > div {
+    overflow: hidden;
+  }
+
+  .offering-faq-item[open] .offering-faq-panel {
+    grid-template-rows: 1fr;
+  }
+
+  .offering-faq-item[open] .offering-faq-chevron {
+    rotate: 180deg;
+    background-color: color-mix(in srgb, var(--color-teal) 12%, white);
+    color: var(--color-teal);
+  }
+
+  .offering-faq-item summary::-webkit-details-marker {
+    display: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .offering-faq-panel {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  const list = document.querySelector('.offering-faq-list');
+  if (list) {
+    list.addEventListener('toggle', (event) => {
+      const target = event.target;
+      if (!(target instanceof HTMLDetailsElement) || !target.open) return;
+
+      list.querySelectorAll<HTMLDetailsElement>('details[data-faq-item]').forEach((item) => {
+        if (item !== target && item.open) item.open = false;
+      });
+    });
+  }
+</script>

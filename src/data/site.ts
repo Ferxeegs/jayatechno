@@ -21,19 +21,17 @@ export const navLinks = [
   {
     label: 'Jasa Digital',
     children: [
-      { href: '/#layanan', label: 'Digital Marketing' },
-      { href: '/#layanan', label: 'Software House' },
-      { href: '/#layanan', label: 'Training & Sertifikasi' },
+      { href: '/jasa/digital-marketing', label: 'Digital Marketing' },
+      { href: '/jasa/software-house', label: 'Software House' },
+      { href: '/jasa/iot', label: 'Internet of Things (IoT)' },
+      { href: '/jasa/training-sertifikasi', label: 'Training & Sertifikasi' },
     ],
   },
   {
     label: 'Produk Digital',
-    children: [
-      { href: '/#layanan', label: 'SEO' },
-      { href: '/#layanan', label: 'Web & Apps' },
-    ],
+    children: [{ href: '/produk/web-dan-apps', label: 'Web & Apps' }],
   },
   { href: '/portfolio', label: 'Portfolio' },
-  { href: '/#kerjasama', label: 'Blog' },
+  // { href: '/#kerjasama', label: 'Blog' },
   { href: '/#kontak', label: 'Hubungi Kami' },
 ] as const;

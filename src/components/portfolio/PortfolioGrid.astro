@@ -44,17 +44,31 @@ import { categories, projects } from '../../data/portfolio';
         projects
           .filter((p) => !p.featured)
           .map((project) => (
-            <li data-reveal-item data-category={project.category} class="portfolio-item">
+            <li
+              data-reveal-item
+              data-categories={project.categories.join(' ')}
+              class="portfolio-item"
+            >
               <article class="hover-lift group flex h-full flex-col overflow-hidden rounded-2xl bg-white shadow-lg shadow-teal/5 ring-1 ring-mint-accent/50">
-                <div
-                  class:list={['relative aspect-[16/10] bg-gradient-to-br', project.gradient]}
-                  role="img"
-                  aria-label={`Thumbnail ${project.title}`}
-                >
+                <div class="relative aspect-[16/10] overflow-hidden bg-mint">
+                  <img
+                    src={project.image}
+                    alt={project.imageAlt ?? `Screenshot proyek ${project.title}`}
+                    width="640"
+                    height="400"
+                    class="h-full w-full object-cover object-top transition duration-500 group-hover:scale-[1.03]"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <div
+                    class="pointer-events-none absolute inset-0 bg-gradient-to-t from-navy/50 via-transparent to-transparent"
+                    aria-hidden="true"
+                  >
+                  </div>
                   <div class="absolute inset-0 flex items-end bg-gradient-to-t from-navy/80 via-navy/20 to-transparent p-5 opacity-0 transition duration-300 group-hover:opacity-100">
                     <span class="text-sm font-medium text-white">Lihat detail ↓</span>
                   </div>
-                  <span class="absolute right-4 top-4 rounded-full bg-white/90 px-3 py-1 text-xs font-bold text-teal">
+                  <span class="absolute right-4 top-4 rounded-full bg-white/90 px-3 py-1 text-xs font-bold text-teal shadow-sm">
                     {project.year}
                   </span>
                 </div>
@@ -106,7 +120,8 @@ import { categories, projects } from '../../data/portfolio';
 
       let visible = 0;
       items.forEach((item) => {
-        const match = category === 'all' || item.dataset.category === category;
+        const itemCategories = item.dataset.categories?.split(' ') ?? [];
+        const match = category === 'all' || itemCategories.includes(category ?? '');
         item.classList.toggle('hidden', !match);
         if (match) visible++;
       });

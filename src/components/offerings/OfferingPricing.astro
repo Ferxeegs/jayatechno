@@ -1,0 +1,92 @@
+---
+import SectionHeading from '../ui/SectionHeading.astro';
+import type { Offering } from '../../data/offerings';
+
+interface Props {
+  offering: Offering;
+}
+
+const { offering } = Astro.props;
+---
+
+<section id="harga" class="bg-white py-16 sm:py-24 scroll-mt-24" aria-labelledby="offering-pricing-heading">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <SectionHeading
+      id="offering-pricing-heading"
+      title="Paket & Investasi"
+      highlight="Investasi"
+      subtitle={offering.pricingIntro}
+      align="center"
+      reveal
+    />
+
+    <p class="mx-auto mt-4 max-w-2xl text-center text-xs text-body" data-reveal>
+      * Harga belum termasuk PPN. Penawaran resmi diterbitkan setelah konsultasi kebutuhan.
+    </p>
+
+    <ul class="mt-12 grid gap-8 lg:grid-cols-3" data-reveal-stagger role="list">
+      {
+        offering.pricing.map((tier) => (
+          <li data-reveal-item class="flex">
+            <article
+              class:list={[
+                'flex w-full flex-col rounded-3xl border p-8 transition duration-300',
+                tier.featured
+                  ? 'relative border-teal/40 bg-gradient-to-b from-white via-mint/40 to-mint-accent/20 shadow-xl shadow-teal/10 ring-2 ring-teal/20 lg:-translate-y-2'
+                  : 'border-mint-accent bg-white shadow-lg shadow-teal/5',
+              ]}
+            >
+              {tier.featured && (
+                <span class="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-yellow px-4 py-1 text-xs font-bold text-navy shadow-md">
+                  Paling Populer
+                </span>
+              )}
+              <div class="text-center lg:text-left">
+                <h3 class="text-xl font-extrabold text-navy">{tier.name}</h3>
+                <p class="mt-1 text-sm text-teal-light">{tier.tagline}</p>
+                <p class="mt-6 flex flex-wrap items-baseline justify-center gap-1 lg:justify-start">
+                  <span class="text-3xl font-black tracking-tight text-navy sm:text-4xl">{tier.price}</span>
+                  {tier.priceNote && (
+                    <span class="text-sm font-medium text-body">{tier.priceNote}</span>
+                  )}
+                </p>
+              </div>
+
+              <ul class="mt-8 flex-1 space-y-3 border-t border-mint-accent pt-8" role="list">
+                {tier.features.map((feature) => (
+                  <li class="flex gap-3 text-sm text-body">
+                    <svg
+                      class="mt-0.5 h-5 w-5 shrink-0 text-teal-light"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <a
+                href="/#kontak"
+                class:list={[
+                  'mt-8 block w-full rounded-xl py-3.5 text-center text-sm font-bold transition duration-300',
+                  tier.featured
+                    ? 'bg-yellow text-navy hover:bg-yellow-bright shadow-md'
+                    : 'border border-teal/20 bg-mint text-teal hover:bg-mint-accent/50',
+                ]}
+              >
+                {tier.ctaLabel}
+              </a>
+            </article>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
