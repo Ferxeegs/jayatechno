@@ -69,10 +69,30 @@ export const businessUnits = [
 ] as const;
 
 export const leadership = [
-  { name: 'Aris Kusnandar, S.Kom., M.Kom.', role: 'Founder', focus: 'Strategi & Pengembangan Bisnis' },
-  { name: 'Imam Syafi\'i, S.Kom., M.Kom.', role: 'Direktur Operasional', focus: 'Manajemen Proyek & Software' },
-  { name: 'Fajar Hari P, S.Kom., M.Kom.', role: 'Direktur Operasional', focus: 'Brand Strategy & Digital Marketing' },
-  { name: 'Fadlil Ferdiansyah, S.T.', role: 'Direktur Operasional', focus: 'Arsitektur Software & Inovasi' },
+  {
+    name: 'Aris Kusnandar, S.Kom., M.Kom.',
+    role: 'Founder & CEO',
+    focus: 'Strategi & Pengembangan Bisnis',
+    photo: '/images/team/CEO.jpeg',
+  },
+  {
+    name: 'Imam Syafi\'i, S.Kom., M.Kom.',
+    role: 'Chief Operating Officer (COO)',
+    focus: 'Manajemen Proyek & Software Delivery',
+    photo: '/images/team/COO.jpeg',
+  },
+  {
+    name: 'Fajar Hari P, S.Kom., M.Kom.',
+    role: 'Chief Marketing Officer (CMO)',
+    focus: 'Brand Strategy & Digital Marketing',
+    photo: '/images/team/CMO.webp',
+  },
+  {
+    name: 'Fadlil Ferdiansyah, S.T.',
+    role: 'Chief Technology Officer (CTO)',
+    focus: 'Arsitektur Software & Inovasi',
+    photo: '/images/team/CTO.webp',
+  },
 ] as const;
 
 export const differentiators = [

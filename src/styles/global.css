@@ -1,14 +1,15 @@
 @import "tailwindcss";
 
 @theme {
-  --color-mint: #f0f9f7;
-  --color-mint-accent: #d1eae3;
-  --color-teal: #0d3b4c;
-  --color-teal-light: #4a9084;
-  --color-navy: #002d40;
-  --color-yellow: #f9e05e;
-  --color-yellow-bright: #fcee21;
-  --color-body: #666666;
+  /* JayaTechno logo palette — blue (Jaya) + orange (Techno) */
+  --color-mint: #f2f6fc;
+  --color-mint-accent: #d4e2f0;
+  --color-teal: #2d599e;
+  --color-teal-light: #5a7db5;
+  --color-navy: #1a3352;
+  --color-yellow: #f15a24;
+  --color-yellow-bright: #ff7240;
+  --color-body: #5c6b7a;
   --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
 }
 
@@ -23,7 +24,7 @@
     color: var(--color-navy);
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
-    background: radial-gradient(circle at 10% 20%, rgba(240, 249, 247, 0.4) 0%, rgba(255, 255, 255, 1) 90%);
+    background: radial-gradient(circle at 10% 20%, rgba(242, 246, 252, 0.55) 0%, rgba(255, 255, 255, 1) 90%);
   }
 
   main {
@@ -40,14 +41,14 @@
     width: 10px;
   }
   ::-webkit-scrollbar-track {
-    background: #f0f9f7;
+    background: var(--color-mint);
   }
   ::-webkit-scrollbar-thumb {
-    background: #d1eae3;
+    background: var(--color-mint-accent);
     border-radius: 5px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #4a9084;
+    background: var(--color-teal-light);
   }
 }
 
@@ -68,19 +69,19 @@
     background: rgba(255, 255, 255, 0.75);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(209, 234, 227, 0.4);
+    border: 1px solid rgba(212, 226, 240, 0.55);
   }
 
   .glass-card {
     background: #ffffff;
-    border: 1px solid rgba(209, 234, 227, 0.9);
-    box-shadow: 0 8px 32px 0 rgba(13, 59, 76, 0.06);
+    border: 1px solid rgba(212, 226, 240, 0.95);
+    box-shadow: 0 8px 32px 0 rgba(26, 51, 82, 0.06);
   }
 
   .glass-card-featured {
     background: #ffffff;
-    border: 1px solid rgba(74, 144, 132, 0.35);
-    box-shadow: 0 20px 40px -12px rgba(13, 59, 76, 0.12);
+    border: 1px solid rgba(45, 89, 158, 0.28);
+    box-shadow: 0 20px 40px -12px rgba(26, 51, 82, 0.1);
   }
 
   /*
@@ -313,14 +314,14 @@
   }
 
   .glow-teal {
-    box-shadow: 0 0 20px rgba(13, 59, 76, 0.1);
+    box-shadow: 0 0 20px rgba(45, 89, 158, 0.12);
   }
 
   .glow-teal-strong:hover {
-    box-shadow: 0 0 30px rgba(74, 144, 132, 0.25);
+    box-shadow: 0 0 30px rgba(90, 125, 181, 0.28);
   }
 
   .glow-yellow:hover {
-    box-shadow: 0 10px 25px -5px rgba(249, 224, 94, 0.45);
+    box-shadow: 0 10px 25px -5px rgba(241, 90, 36, 0.35);
   }
 }
