@@ -1,22 +1,19 @@
 ---
 const partners = [
-  { name: 'Pondok Pesantren Ali Maksum', abbr: 'PP Ali Maksum' },
-  { name: 'Arshakatour', abbr: 'Arshaka' },
-  { name: 'Universitas Muhammadiyah Kendal Batang', abbr: 'UMKBA' },
-  { name: 'Atika Transport', abbr: 'Atika Transport' },
-  { name: 'Roti Week N', abbr: 'Week N' },
-  { name: 'Trooking', abbr: 'Trooking' },
-  { name: 'Marga Jaya', abbr: 'Marga Jaya' },
-  { name: 'Syndrome Ukai', abbr: 'Syndrome' },
-  { name: 'Mustika Company', abbr: 'Mustika' },
-  { name: 'Tulip Studio', abbr: 'Tulip' },
-  { name: 'Grand Rohan Jogja', abbr: 'Grand Rohan' },
-  { name: 'Diskominfo Kab. Gunung Mas', abbr: 'Diskominfo' },
-  { name: 'Universitas Diponegoro', abbr: 'UNDIP' },
-  { name: 'Universitas Sugeng Hartono', abbr: 'USH' },
-  { name: 'Istana Jaya Bangsa', abbr: 'IJB' },
-  { name: 'Project One', abbr: 'PO' },
-  { name: 'Klinik Pratama Diponegoro 1', abbr: 'KPD1' },
+  { name: 'Pondok Pesantren Ali Maksum', logo: '/images/partners/ali-maksum.jpg' },
+  { name: 'Arshakatour', logo: '/images/partners/arshaka.png' },
+  { name: 'Universitas Diponegoro', logo: '/images/partners/undip.jpg' },
+  { name: 'Universitas Muhammadiyah Kendal Batang', logo: '/images/partners/umkb.png' },
+  { name: 'Universitas Sugeng Hartono', logo: '/images/partners/ush.png' },
+  { name: 'Diskominfo Kab. Gunung Mas', logo: '/images/partners/diskominfo.jpg' },
+  { name: 'Atika Transport', logo: '/images/partners/atika.png' },
+  { name: 'Roti Week N', logo: '/images/partners/weekn.png' },
+  { name: 'Trooking', logo: '/images/partners/trooking.png' },
+  { name: 'Marga Jaya', logo: '/images/partners/margajaya.png' },
+  { name: 'Syndrome Ukai', logo: '/images/partners/syndrome.jpg' },
+  { name: 'Mustika Company', logo: '/images/partners/mustika.png' },
+  { name: 'Tulip Studio', logo: '/images/partners/tulip.png' },
+  { name: 'Grand Rohan Jogja', logo: '/images/partners/grand.png' },
 ];
 ---
 
@@ -35,12 +32,16 @@ const partners = [
           <div class="flex gap-8" aria-hidden={setIndex > 0}>
             {partners.map((partner) => (
               <div class="flex shrink-0 items-center gap-3 rounded-xl border border-slate-100 bg-white px-4 py-3 shadow-sm sm:gap-4 sm:rounded-2xl sm:px-6 sm:py-3.5">
-                <div
-                  class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-teal to-navy text-xs font-black text-yellow"
+                <img
+                  src={partner.logo}
+                  alt=""
+                  width="48"
+                  height="48"
+                  class="h-12 w-12 shrink-0 rounded-xl object-contain object-center"
+                  loading="lazy"
+                  decoding="async"
                   aria-hidden="true"
-                >
-                  {partner.abbr.slice(0, 3)}
-                </div>
+                />
                 <span class="max-w-[140px] text-[10px] font-bold uppercase leading-snug tracking-wider text-teal sm:max-w-[180px] sm:text-sm">
                   {partner.name}
                 </span>
