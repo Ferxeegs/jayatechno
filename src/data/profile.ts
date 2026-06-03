@@ -88,10 +88,10 @@ export const leadership = [
     photo: '/images/team/CMO.webp',
   },
   {
-    name: 'Fadlil Ferdiansyah, S.T.',
-    role: 'Chief Technology Officer (CTO)',
-    focus: 'Arsitektur Software & Inovasi',
-    photo: '/images/team/CTO.webp',
+    name: 'Qodri Aziz, S.Kom., M.Eng.',
+    role: 'Project Manager',
+    focus: 'Data Analytics and Pervasive Intelligence',
+    photo: '/images/team/PM.jpeg',
   },
 ] as const;
 
