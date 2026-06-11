@@ -1,0 +1,41 @@
+---
+import { site } from '../../data/site';
+
+interface Props {
+  title: string;
+  highlight?: string;
+  description: string;
+  primaryLabel?: string;
+  primaryHref?: string;
+}
+
+const {
+  title,
+  highlight,
+  description,
+  primaryLabel = 'Hubungi Kami',
+  primaryHref = '/#kontak',
+} = Astro.props;
+---
+
+<section
+  class="relative overflow-hidden bg-gradient-to-r from-teal to-navy py-16 text-white sm:py-20"
+  aria-labelledby="legal-cta-heading"
+>
+  <div class="relative mx-auto max-w-4xl px-4 text-center sm:px-6" data-reveal data-reveal-variant="scale">
+    <h2 id="legal-cta-heading" class="text-3xl font-extrabold sm:text-4xl">
+      {title}
+      {highlight && <span class="text-yellow"> {highlight}</span>}
+    </h2>
+    <p class="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-white/80">
+      {description}
+    </p>
+    <a
+      href={primaryHref}
+      class="mt-8 inline-flex items-center justify-center rounded-full bg-yellow px-8 py-3.5 text-sm font-bold text-navy shadow-lg transition hover:bg-yellow-bright"
+    >
+      {primaryLabel}
+    </a>
+    <p class="mt-4 text-sm text-white/55">{site.email}</p>
+  </div>
+</section>

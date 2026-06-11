@@ -1,0 +1,242 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageLayout from '../layouts/PageLayout.astro';
+import SectionHeading from '../components/ui/SectionHeading.astro';
+import LegalHero from '../components/legal/LegalHero.astro';
+import LegalCTA from '../components/legal/LegalCTA.astro';
+import { site } from '../data/site';
+import {
+  internshipMeta,
+  internshipHero,
+  internshipOverview,
+  internshipTracks,
+  internshipFormat,
+  internshipRequirements,
+  internshipProcess,
+  internshipFaqs,
+} from '../data/legal';
+
+const title = `${internshipMeta.title} — ${site.name}`;
+const description = internshipMeta.description;
+const applyHref = '/#kontak';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: title,
+  description,
+  url: `${site.url}/magang`,
+  publisher: { '@type': 'Organization', name: site.name },
+};
+---
+
+<Layout title={title} description={description}>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  <PageLayout>
+    <main>
+      <LegalHero
+        eyebrow={internshipHero.eyebrow}
+        title={internshipHero.title}
+        highlight={internshipHero.highlight}
+        subtitle={internshipHero.subtitle}
+        stats={internshipHero.stats}
+        currentLabel="Magang"
+        ctaHref={applyHref}
+        ctaLabel="Daftar Magang"
+        secondaryHref="#alur"
+        secondaryLabel="Lihat Alur Pendaftaran"
+      />
+
+      <section class="bg-white py-16 sm:py-24" aria-labelledby="magang-overview-heading">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="grid gap-12 lg:grid-cols-2 lg:gap-16" data-reveal-stagger>
+            <div data-reveal-item data-reveal-variant="left">
+              <SectionHeading
+                id="magang-overview-heading"
+                title="Tentang Program Magang Daring"
+                highlight="Daring"
+              />
+              <div class="mt-8 space-y-5 text-base leading-relaxed text-body">
+                {internshipOverview.paragraphs.map((p) => <p>{p}</p>)}
+              </div>
+            </div>
+            <ul class="space-y-4" data-reveal-item data-reveal-variant="right" role="list">
+              {internshipOverview.benefits.map((benefit) => (
+                <li class="flex gap-4 rounded-2xl border border-mint-accent/60 bg-mint/40 p-5">
+                  <span
+                    class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-teal text-yellow"
+                    aria-hidden="true"
+                  >
+                    <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                      <path
+                        fill-rule="evenodd"
+                        d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                  </span>
+                  <span class="text-sm font-semibold leading-relaxed text-navy sm:text-base">{benefit}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-mint/30 py-16 sm:py-24" aria-labelledby="magang-tracks-heading">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <SectionHeading
+            id="magang-tracks-heading"
+            title="Divisi Magang"
+            highlight="Magang"
+            subtitle="Pilih jalur sesuai minat dan kompetensi Anda. Penempatan akhir disesuaikan hasil seleksi."
+            align="center"
+            reveal
+          />
+          <ul class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4" data-reveal-stagger role="list">
+            {internshipTracks.map((track, i) => (
+              <li data-reveal-item>
+                <article class="hover-lift h-full rounded-2xl border border-mint-accent/50 bg-white p-6 shadow-sm">
+                  <span
+                    class="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-teal to-navy text-sm font-bold text-yellow"
+                    aria-hidden="true"
+                  >
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <h3 class="mt-4 text-lg font-bold text-navy">{track.title}</h3>
+                  <p class="mt-2 text-sm leading-relaxed text-body">{track.description}</p>
+                  <ul class="mt-4 flex flex-wrap gap-1.5" role="list">
+                    {track.tags.map((tag) => (
+                      <li class="rounded-md bg-mint px-2 py-1 text-xs font-medium text-teal">{tag}</li>
+                    ))}
+                  </ul>
+                </article>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section class="bg-white py-16 sm:py-24" aria-labelledby="magang-format-heading">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <SectionHeading
+            id="magang-format-heading"
+            title="Format Magang Online"
+            highlight="Online"
+            subtitle="Struktur kegiatan yang jelas agar pengalaman magang daring tetap terarah dan profesional."
+            align="center"
+            reveal
+          />
+          <ol class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4" data-reveal-stagger>
+            {internshipFormat.map((item) => (
+              <li data-reveal-item>
+                <article class="h-full rounded-2xl border border-mint-accent/60 bg-mint/30 p-6">
+                  <span class="text-3xl font-black text-mint-accent" aria-hidden="true">{item.step}</span>
+                  <h3 class="mt-3 text-lg font-bold text-navy">{item.title}</h3>
+                  <p class="mt-2 text-sm leading-relaxed text-body">{item.description}</p>
+                </article>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      <section class="bg-mint/30 py-16 sm:py-24" aria-labelledby="magang-requirements-heading">
+        <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8" data-reveal>
+          <SectionHeading
+            id="magang-requirements-heading"
+            title="Persyaratan Peserta"
+            highlight="Peserta"
+            align="center"
+          />
+          <ul class="mt-10 space-y-3" role="list">
+            {internshipRequirements.map((req) => (
+              <li class="flex gap-3 rounded-xl border border-mint-accent/50 bg-white px-5 py-4 text-sm text-body shadow-sm">
+                <svg class="mt-0.5 h-5 w-5 shrink-0 text-teal-light" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path
+                    fill-rule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+                <span>{req}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section id="alur" class="scroll-mt-24 bg-white py-16 sm:py-24" aria-labelledby="magang-process-heading">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <SectionHeading
+            id="magang-process-heading"
+            title="Alur Pendaftaran"
+            highlight="Pendaftaran"
+            align="center"
+            reveal
+          />
+          <ol class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4" data-reveal-stagger>
+            {internshipProcess.map((item) => (
+              <li data-reveal-item>
+                <article class="relative h-full rounded-2xl border border-mint-accent/60 bg-white p-6 shadow-sm">
+                  <span class="text-3xl font-black text-teal/20" aria-hidden="true">{item.step}</span>
+                  <h3 class="mt-2 text-lg font-bold text-navy">{item.title}</h3>
+                  <p class="mt-2 text-sm leading-relaxed text-body">{item.description}</p>
+                </article>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      <section class="bg-mint/30 py-16 sm:py-24" aria-labelledby="magang-faq-heading">
+        <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+          <SectionHeading id="magang-faq-heading" title="Pertanyaan Umum" highlight="Umum" align="center" reveal />
+          <div class="mt-12 space-y-3" data-reveal-stagger>
+            {internshipFaqs.map((faq, index) => (
+              <details
+                data-reveal-item
+                class="group rounded-2xl border border-mint-accent/50 bg-white shadow-sm open:shadow-md transition"
+              >
+                <summary class="flex cursor-pointer list-none items-center justify-between gap-4 px-6 py-5 marker:content-none [&::-webkit-details-marker]:hidden">
+                  <span class="flex items-center gap-4">
+                    <span
+                      class="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-mint text-sm font-bold text-teal group-open:bg-teal group-open:text-yellow"
+                      aria-hidden="true"
+                    >
+                      {String(index + 1).padStart(2, '0')}
+                    </span>
+                    <span class="text-left font-bold text-navy">{faq.question}</span>
+                  </span>
+                  <svg
+                    class="h-5 w-5 shrink-0 text-teal-light transition group-open:rotate-180"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.94a.75.75 0 111.08 1.04l-4.24 4.5a.75.75 0 01-1.08 0l-4.24-4.5a.75.75 0 01.02-1.06z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                </summary>
+                <div class="border-t border-mint-accent/40 px-6 pb-5 pt-2 text-sm leading-relaxed text-body">
+                  {faq.answer}
+                </div>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <LegalCTA
+        title="Siap Bergabung sebagai"
+        highlight="Magang?"
+        description="Kirim CV, portofolio (jika ada), dan surat pengantar kampus melalui formulir kontak. Tim kami akan menghubungi Anda untuk tahap seleksi berikutnya."
+        primaryLabel="Daftar Magang Sekarang"
+        primaryHref={applyHref}
+      />
+    </main>
+  </PageLayout>
+</Layout>

@@ -1,0 +1,129 @@
+---
+import Breadcrumb from '../ui/Breadcrumb.astro';
+
+interface Stat {
+  value: string;
+  label: string;
+}
+
+interface Props {
+  eyebrow: string;
+  title: string;
+  highlight: string;
+  subtitle: string;
+  stats?: readonly Stat[];
+  currentLabel: string;
+  ctaHref?: string;
+  ctaLabel?: string;
+  secondaryHref?: string;
+  secondaryLabel?: string;
+}
+
+const {
+  eyebrow,
+  title,
+  highlight,
+  subtitle,
+  stats,
+  currentLabel,
+  ctaHref = '/#kontak',
+  ctaLabel = 'Hubungi Kami',
+  secondaryHref,
+  secondaryLabel,
+} = Astro.props;
+---
+
+<section
+  class="relative overflow-hidden bg-gradient-to-br from-navy via-teal to-[#1a4a7a] text-white"
+  aria-labelledby="legal-hero-heading"
+>
+  <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+    <div
+      class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:48px_48px] [mask-image:radial-gradient(ellipse_80%_70%_at_50%_0%,#000_50%,transparent_100%)]"
+    >
+    </div>
+    <div class="page-hero-glow absolute -right-20 top-0 h-[480px] w-[480px] rounded-full bg-yellow/15 blur-3xl"></div>
+    <div class="page-hero-glow-delay absolute -bottom-32 -left-20 h-80 w-80 rounded-full bg-teal-light/25 blur-3xl"></div>
+  </div>
+
+  <div class="relative mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
+    <div data-reveal-hero>
+      <Breadcrumb
+        light
+        items={[
+          { label: 'Beranda', href: '/' },
+          { label: currentLabel },
+        ]}
+      />
+    </div>
+
+    <div class="mt-8 max-w-3xl">
+      <p
+        data-reveal-hero
+        class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-white/90 backdrop-blur-md"
+      >
+        <span class="h-1.5 w-1.5 rounded-full bg-yellow shadow-[0_0_8px_rgba(241,90,36,0.8)]" aria-hidden="true"></span>
+        {eyebrow}
+      </p>
+
+      <h1
+        data-reveal-hero
+        id="legal-hero-heading"
+        class="mt-5 text-balance text-4xl font-extrabold leading-[1.1] tracking-tight sm:text-5xl lg:text-[3.25rem]"
+      >
+        {title}
+        <span class="text-yellow">
+          <span class="legal-hero-highlight">{highlight}</span>
+        </span>
+      </h1>
+
+      <p data-reveal-hero class="mt-6 text-base leading-relaxed text-white/80 sm:text-lg">
+        {subtitle}
+      </p>
+
+      <div data-reveal-hero class="mt-8 flex flex-wrap gap-4">
+        <a
+          href={ctaHref}
+          class="inline-flex items-center justify-center gap-2 rounded-full bg-yellow px-7 py-3.5 text-sm font-bold text-navy shadow-lg shadow-yellow/20 transition hover:bg-yellow-bright"
+        >
+          {ctaLabel}
+        </a>
+        {
+          secondaryHref && secondaryLabel && (
+            <a
+              href={secondaryHref}
+              class="inline-flex items-center justify-center rounded-full border border-white/25 bg-white/10 px-7 py-3.5 text-sm font-semibold text-white backdrop-blur-md transition hover:bg-white/15"
+            >
+              {secondaryLabel}
+            </a>
+          )
+        }
+      </div>
+    </div>
+
+    {
+      stats && (
+        <dl class="mt-12 grid grid-cols-3 gap-4 sm:max-w-xl" data-reveal-stagger>
+          {stats.map((stat) => (
+            <div
+              data-reveal-item
+              class="rounded-2xl border border-white/10 bg-white/10 px-4 py-5 text-center backdrop-blur-sm sm:text-left"
+            >
+              <dt class="text-2xl font-extrabold text-yellow sm:text-3xl">{stat.value}</dt>
+              <dd class="mt-1 text-xs font-medium text-white/70 sm:text-sm">{stat.label}</dd>
+            </div>
+          ))}
+        </dl>
+      )
+    }
+  </div>
+</section>
+
+<style>
+  .legal-hero-highlight {
+    background-image: linear-gradient(rgba(241, 90, 36, 0.55), rgba(241, 90, 36, 0.55));
+    background-size: 100% 0.32em;
+    background-repeat: no-repeat;
+    background-position: 0 92%;
+  }
+</style>

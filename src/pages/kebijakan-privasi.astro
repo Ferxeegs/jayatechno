@@ -1,0 +1,119 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageLayout from '../layouts/PageLayout.astro';
+import LegalHero from '../components/legal/LegalHero.astro';
+import LegalCTA from '../components/legal/LegalCTA.astro';
+import { site } from '../data/site';
+import { privacyMeta, privacySections } from '../data/legal';
+
+const title = `${privacyMeta.title} — ${site.name}`;
+const description = privacyMeta.description;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: title,
+  description,
+  url: `${site.url}/kebijakan-privasi`,
+  dateModified: privacyMeta.lastUpdated,
+  publisher: {
+    '@type': 'Organization',
+    name: site.legalName,
+    url: site.url,
+  },
+};
+---
+
+<Layout title={title} description={description}>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  <PageLayout>
+    <main>
+      <LegalHero
+        eyebrow="Legal"
+        title="Kebijakan"
+        highlight="Privasi"
+        subtitle="Kami berkomitmen melindungi data pribadi pengunjung dan klien website Jaya Techno sesuai praktik terbaik dan peraturan yang berlaku di Indonesia."
+        currentLabel="Kebijakan Privasi"
+        ctaHref={`mailto:${site.email}`}
+        ctaLabel="Pertanyaan Privasi"
+        secondaryHref="#kontak-privacy"
+        secondaryLabel="Baca Selengkapnya"
+      />
+
+      <section class="bg-white py-16 sm:py-24" aria-labelledby="privacy-content-heading">
+        <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+          <p id="privacy-content-heading" class="sr-only">Isi kebijakan privasi</p>
+
+          <div
+            class="mb-10 flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-mint-accent/60 bg-mint/40 px-6 py-4"
+            data-reveal
+          >
+            <div>
+              <p class="text-xs font-bold uppercase tracking-widest text-teal-light">Pengendali Data</p>
+              <p class="mt-1 font-bold text-navy">{site.legalName}</p>
+              <p class="text-sm text-body">Beroperasi sebagai {site.name}</p>
+            </div>
+            <div class="text-right">
+              <p class="text-xs font-bold uppercase tracking-widest text-teal-light">Terakhir Diperbarui</p>
+              <p class="mt-1 text-sm font-semibold text-navy">{privacyMeta.lastUpdated}</p>
+            </div>
+          </div>
+
+          <div class="space-y-12" data-reveal-stagger>
+            {
+              privacySections.map((section) => (
+                <article
+                  data-reveal-item
+                  id={section.id}
+                  class="scroll-mt-28 border-b border-mint-accent/40 pb-12 last:border-0"
+                >
+                  <h2 class="text-xl font-extrabold text-navy sm:text-2xl">{section.title}</h2>
+                  <div class="mt-5 space-y-4 text-base leading-relaxed text-body">
+                    {section.paragraphs.map((p) => (
+                      <p>{p}</p>
+                    ))}
+                    {'list' in section && section.list && (
+                      <ul class="ml-1 space-y-2" role="list">
+                        {section.list.map((item) => (
+                          <li class="flex gap-3">
+                            <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-teal-light" aria-hidden="true" />
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                    {'footer' in section && section.footer && <p class="text-sm text-body/90">{section.footer}</p>}
+                    {section.id === 'kontak' && (
+                      <address id="kontak-privacy" class="not-italic rounded-2xl border border-mint-accent/50 bg-mint/30 p-6">
+                        <p class="font-bold text-navy">{site.legalName}</p>
+                        <p class="mt-2 text-sm text-body">{site.address}</p>
+                        <p class="mt-3">
+                          <a href={`mailto:${site.email}`} class="font-semibold text-teal-light hover:text-teal hover:underline">
+                            {site.email}
+                          </a>
+                        </p>
+                        <p class="mt-1">
+                          <a href={`tel:${site.phones[0].replace(/\D/g, '')}`} class="text-sm text-body hover:text-teal">
+                            {site.phones[0]}
+                          </a>
+                        </p>
+                      </address>
+                    )}
+                  </div>
+                </article>
+              ))
+            }
+          </div>
+        </div>
+      </section>
+
+      <LegalCTA
+        title="Ada Pertanyaan tentang"
+        highlight="Data Anda?"
+        description="Tim kami siap membantu permintaan akses, koreksi, atau penghapusan data pribadi sesuai hak Anda sebagai subjek data."
+        primaryLabel="Email Privasi"
+        primaryHref={`mailto:${site.email}?subject=Permintaan%20Data%20Pribadi`}
+      />
+    </main>
+  </PageLayout>
+</Layout>
