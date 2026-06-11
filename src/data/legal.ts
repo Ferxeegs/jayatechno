@@ -33,7 +33,7 @@ export const internshipOverview = {
     '100% daring — bisa diikuti dari seluruh Indonesia',
     'Mentoring langsung dari tim profesional Jaya Techno',
     'Pengalaman proyek nyata untuk portofolio',
-    'Sertifikat magang & evaluasi kompetensi',
+    // 'Sertifikat magang & evaluasi kompetensi',
     'Jam fleksibel dengan core hours terjadwal',
   ],
 } as const;
