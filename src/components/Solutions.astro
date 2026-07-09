@@ -5,6 +5,7 @@ const services = [
     description:
       'Tingkatkan visibilitas dan hasil bisnis dengan layanan SEO, iklan digital, dan manajemen media sosial yang dirancang untuk membawa lebih banyak pelanggan.',
     icon: 'monitor',
+    href: '/jasa/digital-marketing',
     featured: false,
   },
   {
@@ -12,6 +13,15 @@ const services = [
     description:
       'Kami bukan sekadar penyedia layanan, tapi mitra yang siap membantu Anda mengembangkan website, aplikasi, dan sistem bisnis yang benar-benar bekerja.',
     icon: 'mobile',
+    href: '/jasa/software-house',
+    featured: false,
+  },
+  {
+    title: 'Internet of Things (IoT)',
+    description:
+      'Solusi IoT end-to-end untuk monitoring, otomasi, dan analitik data real-time—dari perangkat edge hingga dashboard cloud.',
+    icon: 'iot',
+    href: '/jasa/iot',
     featured: false,
   },
   {
@@ -19,6 +29,7 @@ const services = [
     description:
       'Pelatihan tematik untuk instansi, perusahaan, hingga UMKM terkait IT dan Digital. Kami juga berkolaborasi dalam uji kompetensi & sertifikasi.',
     icon: 'certificate',
+    href: '/jasa/training-sertifikasi',
     featured: true,
   },
 ];
@@ -41,13 +52,14 @@ const services = [
       </p>
     </div>
 
-    <div class="mt-10 grid gap-5 sm:mt-16 sm:gap-8 md:grid-cols-3" data-reveal-stagger>
+    <div class="mt-10 grid gap-5 sm:mt-16 sm:gap-8 md:grid-cols-2 lg:grid-cols-4" data-reveal-stagger>
       {
         services.map((service) => (
-          <article
+          <a
+            href={service.href}
             data-reveal-item
             class:list={[
-              'solution-card transform-gpu group rounded-2xl border p-5 transition duration-300 will-change-[transform,opacity] sm:rounded-3xl sm:p-8',
+              'solution-card transform-gpu group block rounded-2xl border p-5 no-underline transition duration-300 will-change-[transform,opacity] sm:rounded-3xl sm:p-8',
               service.featured
                 ? 'glass-card-featured relative overflow-hidden bg-gradient-to-br from-white via-mint/30 to-mint-accent/20 shadow-lg hover:-translate-y-1'
                 : 'glass-card hover:-translate-y-1 hover:border-mint-accent hover:shadow-xl hover:shadow-teal/5',
@@ -80,6 +92,13 @@ const services = [
                   <path d="M9 6l6 4-6 4V6z" stroke-linejoin="round" />
                 </svg>
               )}
+              {service.icon === 'iot' && (
+                <svg class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <rect x="4" y="4" width="16" height="16" rx="2" />
+                  <circle cx="12" cy="12" r="3" />
+                  <path d="M12 1v3M12 20v3M1 12h3M20 12h3" stroke-linecap="round" />
+                </svg>
+              )}
               {service.icon === 'certificate' && (
                 <svg class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                   <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
@@ -92,7 +111,11 @@ const services = [
               {service.title}
             </h3>
             <p class="mt-4 text-sm leading-relaxed text-body">{service.description}</p>
-          </article>
+            <p class="mt-4 flex items-center gap-1.5 text-xs font-bold text-teal-light transition-transform duration-300 group-hover:translate-x-1">
+              <span>Pelajari lebih lanjut</span>
+              <span aria-hidden="true">→</span>
+            </p>
+          </a>
         ))
       }
     </div>

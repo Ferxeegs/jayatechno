@@ -1,11 +1,11 @@
 ---
 type ServiceIcon = 'chart' | 'dev' | 'social' | 'cart';
 
-const cards: { title: string; icon: ServiceIcon }[] = [
-  { title: 'Search Engine Optimization (SEO)', icon: 'chart' },
-  { title: 'Web & Apps Development', icon: 'dev' },
-  { title: 'Social Media Management', icon: 'social' },
-  { title: 'Digital Marketing', icon: 'cart' },
+const cards: { title: string; icon: ServiceIcon; href: string }[] = [
+  { title: 'Search Engine Optimization (SEO)', icon: 'chart', href: '/jasa/digital-marketing' },
+  { title: 'Web & Apps Development', icon: 'dev', href: '/produk/web-dan-apps' },
+  { title: 'Social Media Management', icon: 'social', href: '/jasa/digital-marketing' },
+  { title: 'Digital Marketing', icon: 'cart', href: '/jasa/digital-marketing' },
 ];
 
 const iconPaths: Record<ServiceIcon, string> = {
@@ -148,10 +148,10 @@ const iconPaths: Record<ServiceIcon, string> = {
           dengan metrik kinerja terukur.
         </p>
         <a
-          href="#kontak"
+          href="/jasa/software-house"
           class="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-yellow px-8 py-3.5 text-sm font-bold text-navy shadow-md transition hover:bg-yellow-bright glow-yellow sm:mt-8 sm:w-auto"
         >
-          Layanan Lainnya
+          Lihat Semua Layanan
           <span aria-hidden="true">→</span>
         </a>
       </div>
@@ -165,7 +165,7 @@ const iconPaths: Record<ServiceIcon, string> = {
             cards.map((card) => (
               <li data-reveal-item class="min-w-0">
                 <a
-                  href="#kontak"
+                  href={card.href}
                   class="service-grid-card glass-card group flex h-full flex-col gap-4 rounded-2xl border-mint-accent/60 bg-gradient-to-br from-white via-mint/60 to-mint-accent/20 p-6 no-underline transition duration-300 hover:-translate-y-0.5 hover:border-teal-light/25 hover:shadow-lg hover:shadow-teal/10 sm:gap-5 sm:rounded-3xl sm:p-7"
                 >
                   <div
@@ -187,7 +187,7 @@ const iconPaths: Record<ServiceIcon, string> = {
                       {card.title}
                     </h3>
                     <p class="flex items-center gap-1.5 text-xs font-bold text-teal-light transition-transform duration-300 group-hover:translate-x-1">
-                      <span>Mulai Diskusi</span>
+                      <span>Pelajari lebih lanjut</span>
                       <span aria-hidden="true">→</span>
                     </p>
                   </div>

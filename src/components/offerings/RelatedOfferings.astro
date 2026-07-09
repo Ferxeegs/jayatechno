@@ -1,0 +1,47 @@
+---
+import { offerings, getOfferingPath, type Offering } from '../../data/offerings';
+
+interface Props {
+  current: Offering;
+}
+
+const { current } = Astro.props;
+
+const related = offerings.filter((o) => o.slug !== current.slug).slice(0, 4);
+---
+
+<section class="bg-mint/30 py-14 sm:py-20" aria-labelledby="related-offerings-heading">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <h2 id="related-offerings-heading" class="text-2xl font-extrabold text-navy sm:text-3xl">
+      Layanan <span class="highlight-underline">Lainnya</span>
+    </h2>
+    <p class="mt-3 max-w-2xl text-base text-body">
+      Jelajahi solusi digital lain dari Jaya Techno yang mungkin sesuai kebutuhan Anda.
+    </p>
+
+    <ul class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      {
+        related.map((offering) => (
+          <li>
+            <a
+              href={getOfferingPath(offering)}
+              class="group flex h-full flex-col rounded-2xl border border-mint-accent/60 bg-white p-5 no-underline shadow-sm transition hover:-translate-y-0.5 hover:border-teal-light/30 hover:shadow-md"
+            >
+              <span class="text-xs font-bold uppercase tracking-widest text-teal-light">
+                {offering.type === 'jasa' ? 'Jasa' : 'Produk'}
+              </span>
+              <h3 class="mt-2 text-lg font-extrabold text-navy transition-colors group-hover:text-teal">
+                {offering.navLabel}
+              </h3>
+              <p class="mt-2 flex-1 text-sm leading-relaxed text-body">{offering.meta.description}</p>
+              <p class="mt-4 flex items-center gap-1.5 text-xs font-bold text-teal-light transition-transform group-hover:translate-x-1">
+                <span>Selengkapnya</span>
+                <span aria-hidden="true">→</span>
+              </p>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

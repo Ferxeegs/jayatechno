@@ -32,6 +32,7 @@ export const navLinks = [
     children: [{ href: '/produk/web-dan-apps', label: 'Web & Apps' }],
   },
   { href: '/portfolio', label: 'Portfolio' },
+  { href: '/magang', label: 'Magang' },
   // { href: '/#kerjasama', label: 'Blog' },
   { href: '/#kontak', label: 'Hubungi Kami' },
 ] as const;

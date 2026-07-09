@@ -8,6 +8,7 @@ import OfferingPricing from '../../components/offerings/OfferingPricing.astro';
 import OfferingProcess from '../../components/offerings/OfferingProcess.astro';
 import OfferingFAQ from '../../components/offerings/OfferingFAQ.astro';
 import OfferingCTA from '../../components/offerings/OfferingCTA.astro';
+import RelatedOfferings from '../../components/offerings/RelatedOfferings.astro';
 import { site } from '../../data/site';
 import { getJasaOfferings, getOfferingBySlug } from '../../data/offerings';
 
@@ -58,6 +59,7 @@ const jsonLd = {
       <OfferingPricing offering={offering} />
       <OfferingProcess offering={offering} />
       <OfferingFAQ offering={offering} />
+      <RelatedOfferings current={offering} />
       <OfferingCTA offering={offering} />
     </main>
   </PageLayout>
