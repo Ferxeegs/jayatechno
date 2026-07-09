@@ -1,0 +1,65 @@
+---
+import SectionHeading from '../ui/SectionHeading.astro';
+import { trainingAssessor } from '../../data/profile';
+
+const { name, role, focus, photo, certificateUrl } = trainingAssessor;
+---
+
+<section class="bg-mint/30 py-16 sm:py-24" aria-labelledby="offering-assessor-heading">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <SectionHeading
+      id="offering-assessor-heading"
+      title="Profil Asesor Kompetensi"
+      highlight="Asesor"
+      subtitle="Program uji kompetensi dan sertifikasi dipandu oleh asesor bersertifikat dengan pengalaman di bidang teknologi informasi."
+      align="center"
+      reveal
+    />
+
+    <div
+      class="mx-auto mt-14 grid max-w-4xl gap-8 overflow-hidden rounded-3xl border border-mint-accent/60 bg-white shadow-lg shadow-teal/5 lg:grid-cols-[280px_1fr] lg:gap-0"
+      data-reveal
+    >
+      <div class="relative aspect-[4/5] overflow-hidden bg-mint lg:aspect-auto lg:min-h-full">
+        <img
+          src={photo}
+          alt={`Foto ${name}`}
+          width="400"
+          height="500"
+          class="h-full w-full object-cover object-top"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+
+      <div class="flex flex-col justify-center p-6 sm:p-8 lg:p-10">
+        <span class="text-xs font-bold uppercase tracking-widest text-teal-light">Asesor Terdaftar</span>
+        <h3 class="mt-3 text-2xl font-extrabold text-navy">{name}</h3>
+        <p class="mt-2 text-sm font-semibold text-teal-light">{role}</p>
+        <p class="mt-4 text-base leading-relaxed text-body">{focus}</p>
+
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a
+            href={certificateUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 rounded-full bg-teal px-6 py-3 text-sm font-bold text-white transition hover:bg-navy"
+          >
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+              <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" stroke-linejoin="round" />
+              <path d="M14 2v6h6M16 13H8M16 17H8M10 9H8" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            Lihat Sertifikat Asesor
+          </a>
+          <a
+            href={certificateUrl}
+            download
+            class="inline-flex items-center gap-2 rounded-full border border-mint-accent px-6 py-3 text-sm font-semibold text-teal transition hover:border-teal-light hover:bg-mint/40"
+          >
+            Unduh PDF
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

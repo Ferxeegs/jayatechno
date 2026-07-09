@@ -1,0 +1,16 @@
+export const partners = [
+  { name: 'Universitas Diponegoro', logo: '/images/partners/undip.jpg' },
+  { name: 'Universitas Muhammadiyah Kendal Batang', logo: '/images/partners/umkb.png' },
+  { name: 'Universitas Sugeng Hartono', logo: '/images/partners/ush.png' },
+  { name: 'Pondok Pesantren Ali Maksum', logo: '/images/partners/ali-maksum.jpg' },
+  { name: 'Arshakatour', logo: '/images/partners/arshaka.png' },
+  { name: 'Diskominfo Kab. Gunung Mas', logo: '/images/partners/diskominfo.jpg' },
+  { name: 'Atika Transport', logo: '/images/partners/atika.png' },
+  { name: 'Roti Week N', logo: '/images/partners/weekn.png' },
+  { name: 'Trooking', logo: '/images/partners/trooking.png' },
+  { name: 'Marga Jaya', logo: '/images/partners/margajaya.png' },
+  { name: 'Syndrome Ukai', logo: '/images/partners/syndrome.jpg' },
+  { name: 'Mustika Company', logo: '/images/partners/mustika.png' },
+  { name: 'Tulip Studio', logo: '/images/partners/tulip.png' },
+  { name: 'Grand Rohan Jogja', logo: '/images/partners/grand.png' },
+] as const;

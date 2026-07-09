@@ -72,13 +72,13 @@ export const leadership = [
   {
     name: 'Aris Kusnandar, S.Kom., M.Kom.',
     role: 'Founder & CEO',
-    focus: 'Strategi & Pengembangan Bisnis',
+    focus: 'Business Strategy & Development',
     photo: '/images/team/CEO.jpeg',
   },
   {
     name: 'Imam Syafi\'i, S.Kom., M.Kom.',
     role: 'Chief Operating Officer (COO)',
-    focus: 'Manajemen Proyek & Software Delivery',
+    focus: 'Project Management & Software Delivery',
     photo: '/images/team/COO.jpeg',
   },
   {
@@ -88,12 +88,20 @@ export const leadership = [
     photo: '/images/team/CMO.webp',
   },
   {
-    name: 'Qodri Aziz, S.Kom., M.Eng.',
-    role: 'Project Manager',
-    focus: 'Data Analytics and Pervasive Intelligence',
-    photo: '/images/team/PM.jpeg',
+    name: 'Fadlil Ferdiansyah, S.T.',
+    role: 'Chief Technology Officer (CTO)',
+    focus: 'Architecture & System Development',
+    photo: '/images/team/CTO.webp',
   },
 ] as const;
+
+export const trainingAssessor = {
+  name: 'Qodri Aziz, S.Kom., M.Eng.',
+  role: 'Asesor Kompetensi',
+  focus: 'Uji Kompetensi & Sertifikasi Teknologi Informasi',
+  photo: '/images/team/PM.jpeg',
+  certificateUrl: '/pdf/sertifikat-asesor.pdf',
+} as const;
 
 export const differentiators = [
   'Tim multidisiplin: strategi, desain, engineering, dan analitik',
@@ -101,13 +109,6 @@ export const differentiators = [
   'Pengalaman 5+ tahun di sektor pemerintahan, pendidikan, dan korporat',
   'Dukungan purna-jual dan maintenance berkelanjutan',
   'Keamanan data dan kepatuhan standar industri',
-] as const;
-
-export const certifications = [
-  'Microsoft Partner Network',
-  'Google Partner — Ads & Analytics',
-  'Kominfo — Penyelenggara Sistem Elektronik (PSE)',
-  'ISO 9001:2015 — Quality Management (dalam proses)',
 ] as const;
 
 export const stats = [

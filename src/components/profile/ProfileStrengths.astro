@@ -1,6 +1,7 @@
 ---
 import SectionHeading from "../ui/SectionHeading.astro";
-import { differentiators, certifications } from "../../data/profile";
+import { differentiators } from "../../data/profile";
+import { partners } from "../../data/partners";
 ---
 
 <section class="bg-mint py-16 sm:py-24" aria-labelledby="strengths-heading">
@@ -42,31 +43,31 @@ import { differentiators, certifications } from "../../data/profile";
       </div>
 
       <div data-reveal-variant="right" data-reveal>
-        <h3 class="text-xl font-bold text-navy">Sertifikasi & Kemitraan</h3>
+        <h3 class="text-xl font-bold text-navy">Kemitraan & Kolaborasi</h3>
         <p class="mt-3 text-sm leading-relaxed text-body">
-          Kami mempertahankan standar profesional melalui kemitraan resmi dan
-          kepatuhan regulasi industri.
+          Kami telah bekerja sama dengan instansi pendidikan, pemerintahan, dan
+          berbagai organisasi di Indonesia.
         </p>
-        <ul class="mt-6 space-y-3" role="list" data-reveal-stagger>
+        <ul class="mt-6 grid gap-3 sm:grid-cols-2" role="list" data-reveal-stagger>
           {
-            certifications.map((cert) => (
+            partners.map((partner) => (
               <li
                 data-reveal-item
-                class="flex items-center gap-3 rounded-xl border border-mint-accent bg-white px-5 py-4"
+                class="flex items-center gap-3 rounded-xl border border-mint-accent bg-white px-4 py-3"
               >
-                <span
-                  class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-yellow/30"
+                <img
+                  src={partner.logo}
+                  alt=""
+                  width="40"
+                  height="40"
+                  class="h-10 w-10 shrink-0 rounded-lg object-contain object-center"
+                  loading="lazy"
+                  decoding="async"
                   aria-hidden="true"
-                >
-                  <svg
-                    class="h-5 w-5 text-teal"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                  >
-                    <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-1 15l-4-4 1.41-1.41L11 13.17l6.59-6.59L19 8l-8 8z" />
-                  </svg>
+                />
+                <span class="text-xs font-semibold leading-snug text-navy sm:text-sm">
+                  {partner.name}
                 </span>
-                <span class="text-sm font-semibold text-navy">{cert}</span>
               </li>
             ))
           }
